@@ -1,0 +1,23 @@
+curl --location --request POST 'https://ap-south-1.aws.data.mongodb-api.com/app/data-wkkxk/endpoint/data/v1/action/findOne' \
+--header 'Content-Type: application/json' \
+--header 'Access-Control-Request-Headers: *' \
+--header 'api-key: cMTEp3oTQkGSX7x4L1J86YoCmYISNqEObtix1KbKhUy4yqb37hl1u0b4Q62hOqb6' \
+--data-raw '{
+    "collection":"placement_data",
+    "database":"test",
+    "dataSource":"Cluster0",
+    "projection": {"_id": 1}
+}'
+
+
+curl --location --request POST 'https://ap-south-1.aws.data.mongodb-api.com/app/data-wkkxk/endpoint/data/v1/action/findOne' \
+--header 'Content-Type: application/json' \
+--header 'Access-Control-Request-Headers: *' \
+--header 'api-key: cMTEp3oTQkGSX7x4L1J86YoCmYISNqEObtix1KbKhUy4yqb37hl1u0b4Q62hOqb6' \
+--header 'Accept: application/ejson' \
+--data-raw '{
+    "collection":"placement_data",
+    "database":"test",
+    "dataSource":"Cluster0",
+    "projection": {"_id": 1}
+}'
