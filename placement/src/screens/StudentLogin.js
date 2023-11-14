@@ -1,10 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { Text,View, StyleSheet } from 'react-native'
 import { Input,Button } from 'react-native-elements'
 import Spacer from '../components/Spacer'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Context as AuthContext } from '../context/AuthContext'
 const StudentLogin = ({navigation})  => {
 
+    const {state, signin} = useContext(AuthContext);
     const [email,setEmail] = useState('');
     const [password, setPassword] = useState('');
   return (
@@ -39,7 +41,7 @@ const StudentLogin = ({navigation})  => {
                 marginVertical: 10,
               }}
               titleStyle={{ color: 'white', marginHorizontal: 20 }}
-                onPress={() => navigation.navigate('studentFlow')}
+                onPress={() => signin({email, password})}
             />
         <Spacer/>
             <TouchableOpacity 

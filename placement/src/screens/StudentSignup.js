@@ -6,11 +6,12 @@ import Spacer from '../components/Spacer'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Context as AuthContext } from '../context/AuthContext'
 
-const StudentLogin = ({navigation})  => {
+const StudentSignup = ({navigation})  => {
 
     const {state, checkUser} = useContext(AuthContext);    
     const [email,setEmail] = useState('');
-    const [rollno, setRollno] = useState('');
+    const [rno, setRno] = useState('');
+
   return (
     <View style={styles.container}>
         <Spacer>
@@ -27,14 +28,14 @@ const StudentLogin = ({navigation})  => {
         <Spacer>
             <Text>Enter your Roll Number</Text>
             <Input 
-                value={rollno}
-                onChangeText={setRollno}
+                value={rno}
+                onChangeText={setRno}
                 autoCapitalize='none'
                 autoCorrect={false}
             
             />
         </Spacer>
-      
+        {state.errorMessage? <Text style={styles.errorMessage}>{state.errorMessage} </Text>: null}
         <Button 
             title='NEXT'
             buttonStyle={{ backgroundColor: 'rgba(39, 39, 39, 1)' }}
@@ -44,7 +45,7 @@ const StudentLogin = ({navigation})  => {
                 marginVertical: 10,
               }}
               titleStyle={{ color: 'white', marginHorizontal: 20 }}
-            onPress={() => checkUser({email, rollno})}
+            onPress={() => checkUser({email, rno})}
         />
 
             <TouchableOpacity 
@@ -78,11 +79,17 @@ const styles = StyleSheet.create({
 
         flex:1,
         justifyContent: 'center'
+    },
+    errorMessage : {
+
+        fontSize: 16,
+        color:'red',
+        textAlign:'center'
     }
 
 })
 
-StudentLogin.navigationOptions =  () => {
+StudentSignup.navigationOptions =  () => {
 
     return {
 
@@ -90,4 +97,4 @@ StudentLogin.navigationOptions =  () => {
     }
 }
 
-export default StudentLogin;
+export default StudentSignup;

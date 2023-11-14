@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/colors": "^7.0.0",
+    "@react-native-async-storage/async-storage": "^1.19.5",
     "@react-native-community/masked-view": "^0.1.11",
     "ant-design": "^1.0.0",
     "axios": "^1.6.1",

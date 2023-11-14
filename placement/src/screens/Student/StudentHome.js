@@ -6,6 +6,7 @@ export default function StudentHome({navigation}) {
   return (
     <View style={styles.container}>
          
+         
         <Button 
             title='Track your applications'
             buttonStyle={{

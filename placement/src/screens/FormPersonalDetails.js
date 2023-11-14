@@ -12,9 +12,9 @@ const StudentLogin = ({navigation})  => {
     const {state, fillPersonalDetails } = useContext(AuthContext);
     const [dept, setDept] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
-    console.log('state active user',state.email, state.rollno);
+    console.log('state active user',state.email, state.rno);
     const email = state.email;
-    const rollno = state.rollno;
+    const rollno = state.rno;
     
     const yearData = [
 

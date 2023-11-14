@@ -101,65 +101,209 @@ const studentUserSchema = new mongoose.Schema({
             type: String,
             required : true
         },
+   
         marksPostGrad: {
 
             type: String,
             required : true
-    }}
+    }},
+    account_type : {
+
+        type: String,
+        required : true
+    }
 });
 
-studentUserSchema.pre('save',function(next){
+studentUserSchema.pre('save', function(next) { 
 
-    const studentuser = this;
-    if(!studentuser.isModified('password')){
+    const user =this;
+    console.log("user passsword", user.personalDetails.password);
+    if(!user.isModified('personalDetails.password')){
 
         return next();
-    
+    }
 
     bcrypt.genSalt(10, (err, salt) => {
 
-        if(err){
+        if(err) {
             return next(err);
         }
 
-        bcrypt.hash(studentuser.password, salt, (err, hash) => {
-
-            if(err){
+        bcrypt.hash(user.personalDetails.password, salt,(err, hash) => {
+            if(err) {
                 return next(err);
             }
-            studentuser.password=hash;
+
+            user.personalDetails.password = hash;
             next();
-        })
-    })
+        });
+    });
+});
+studentUserSchema.methods.comparePassword = function (candidatePassword) {
 
-}
-})
-
-studentUserSchema.methods.comparePassword = function(candidatePassword) {
-
-    const studentuser = this;
+    console.log("this",this)
+    const user = this
+    console.log(" uuuser r",candidatePassword,user.personalDetails.password,":)))))))))")
     return new Promise((resolve, reject) => {
 
-        bcrypt.compare(candidatePassword, studentuser.password, (err, isMatch) => {
+        bcrypt.compare(candidatePassword,user.personalDetails.password, (err, isMatch) => {
 
-            if(err){
+            if(err) { 
                 return reject(err);
             }
-
             if(!isMatch){
 
                 return reject(false);
             }
 
-            resolve(true);
-        } )
-
+                return resolve(true);
+            
+        })
+        
     })
+}
+
+const facultyUserSchema = new mongoose.Schema({
 
 
-};
+    email : {
+
+        type : String,
+        required : true,
+        unique : true
+    },
+
+    password : {
+
+        type: String,
+        required: true
+    },
+    name : {
+
+        type: String,
+        required: true
+    },
+    account_type : {
+
+        type: String,
+        required : true
+    }
+    
+});
+
+const adminUserSchema = new mongoose.Schema({
 
 
+    email : {
+
+        type : String,
+        required : true,
+        unique : true
+    },
+
+    password : {
+
+        type: String,
+        required: true
+    },
+    name : {
+
+        type: String,
+        required: true
+    },
+    account_type : {
+
+        type: String,
+        required : true,
+        
+    }
+    
+});
+
+adminUserSchema.methods.compareadminPassword = function (candidatePassword) {
+
+    if(candidatePassword==this.password){
+        return "success";
+    }else{
+
+        return "fail";
+    }
+    
+}
+
+const companiesSchema = new mongoose.Schema({
+
+    companyDetails : 
+    {
+        title :{
+        type:String,
+        required : true,
+        },
+        company : {
+            type: String,
+            required :true
+        },
+        description : {
+            type : String,
+            required : true
+        },
+        salary : {
+            type : String,
+            required : true
+        },
+        dateToApply : {
+
+            type : "String",
+            required : true
+        },
+        link : {
+            type : String,
+            required : true
+        }
+    },
+
+    criteria : {
+
+        ssc : {
+            type : String,
+            required : true
+        },
+        hsc : {
+            type : String,
+            required : true
+        },
+        graduation : {
+
+            type : String,
+            required : true
+        },
+        postGraduation : {
+            type : String,
+            required : true
+        }
+    },
+
+    status : {
+
+        recruting : {
+
+            type : String,
+            required : true
+        },
+        app_count : {
+
+            type : Number,
+        },
+
+
+    }
+
+})
+
+
+mongoose.model('Companies',companiesSchema);
+mongoose.model('FacultyUser', facultyUserSchema);
+mongoose.model('AdminUser', adminUserSchema);
 mongoose.model('StudentUser', studentUserSchema);
 mongoose.model('departments', departmentSchema);
 mongoose.model('student_placement_data', studentDataSchema);

@@ -8,13 +8,12 @@ const router = express.Router();
 
 router.post('/checkUser', async(req,res) => {
     console.log("inside check fnbbbbbbbbbbbbb");
-    //const [getDepartments, setDepartments]= useState([]);
     const users = await studentData.find();
     console.log(users);
     
-    const { rollno,email} = req.body;
-    console.log(rollno, email);
-    if(!email || !rollno){
+    const { rno,email} = req.body;
+    console.log(rno, email);
+    if(!email || !rno){
 
         console.log("inside email empty")
         return res.status(422).send({error : 'must provide email n rno'});
@@ -24,7 +23,7 @@ router.post('/checkUser', async(req,res) => {
     
     const user1 =await studentData.findOne({email});
     console.log("user1",user1)
-    const user2 = await studentData.findOne({rollno});
+    const user2 = await studentData.findOne({rno});
     console.log("user2",user2)
      //dept = await departments.find();
     
@@ -50,11 +49,12 @@ router.post('/signupUser', async(req, res) => {
         const {email,rollno,name,password,regno, contact,dept, year,marks10,marks12,marksGrad,marksPostGrad } = req.body;
         const personalDetails = {email,rollno,name,password,regno, contact};
         const academicDetails= {dept,year,marks10,marks12,marksGrad,marksPostGrad} ;
+        const account_type = "student";
         console.log(personalDetails);
         console.log(academicDetails);
         try
         {
-        const studentuser = new studentUser({personalDetails,academicDetails});
+        const studentuser = new studentUser({personalDetails,academicDetails, account_type});
         await studentuser.save();
         const token=jwt.sign({userId : studentuser._id},'MY_SECRET_KEY')
         res.send({token});
@@ -75,7 +75,8 @@ router.post('/signinUser',async (req,res) => {
 
     }
 
-    const user =await studentUser.findOne({email});
+    const user =await studentUser.findOne({"personalDetails.email" :email});
+    console.log("user ::::", user);
     if(!user){
     return res.status(404).send({error : 'Email not found'});
     }
@@ -83,8 +84,11 @@ router.post('/signinUser',async (req,res) => {
     try{
         await user.comparePassword(password);
         const token = jwt.sign({userId: user._id}, 'MY_SECRET_KEY');
+      
+        console.log("signin sucess")
+        //res.send({token});
+        res.send({token})
         
-        res.send({token});
     }catch(err){
 
         console.error(err  );
