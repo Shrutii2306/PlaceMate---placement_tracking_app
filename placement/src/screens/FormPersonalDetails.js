@@ -1,10 +1,11 @@
 import React,{useState, useContext} from 'react'
-import { Text,View, StyleSheet } from 'react-native'
+import { Text,View, StyleSheet, SafeAreaView } from 'react-native'
 import { Input,Button } from 'react-native-elements'
 import Spacer from '../components/Spacer'
 import { Dropdown } from 'react-native-element-dropdown';
 import departments from '../data/departmentData';
 import { Context as AuthContext } from '../context/AuthContext';
+import { ScrollView } from 'react-native-gesture-handler';
 const StudentLogin = ({navigation})  => {
 
     const data = departments;
@@ -54,7 +55,8 @@ const StudentLogin = ({navigation})  => {
     }
     
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
         <Text>Name</Text>
         <Input onChangeText={setName}/>
         <Text>Set Password</Text>
@@ -132,7 +134,8 @@ const StudentLogin = ({navigation})  => {
 
         {/* <Text>{name} , {password}, {regno}, {contact}, {dept} , {year} </Text> */}
         <Text>{userData}</Text>
-    </View>
+        </ScrollView>
+    </SafeAreaView>
   )
 }
 

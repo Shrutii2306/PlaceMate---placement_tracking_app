@@ -21,6 +21,7 @@ const checkUser = (dispatch) =>  async ({email, rollno}) => {
             const response = await placementApi.post('./checkUser',{rollno,email} );
             const actuser = [{email: email, rollno: rollno}]
 
+            console.log(response.data)
             if(response.data=='success')
             {
                 dispatch({type: "checkUser", payload : {email,rollno}});
@@ -28,7 +29,7 @@ const checkUser = (dispatch) =>  async ({email, rollno}) => {
             }
             console.log(response.data);
         }catch(err){
-            console.error(err.response);
+            console.error("outer",err.response);
         }
 }
 
@@ -38,7 +39,12 @@ const fillPersonalDetails = (dispatch) => async ({email,rollno, name, password, 
     try{
 
         const response = await placementApi.post('./signupUser',{email,rollno, name, password, regno, contact,dept, year,marks10,marks12,marksGrad,marksPostGrad});
-        
+
+        console.log(response.data);
+        if(response.data != 'could not sign up')
+        {
+            navigate('studentFlow');
+        }
 
     }catch(err){
 

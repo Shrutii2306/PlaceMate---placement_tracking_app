@@ -16,26 +16,30 @@ router.post('/checkUser', async(req,res) => {
     console.log(rollno, email);
     if(!email || !rollno){
 
+        console.log("inside email empty")
         return res.status(422).send({error : 'must provide email n rno'});
 
     }
 
     
     const user1 =await studentData.findOne({email});
-    console.log(user1)
+    console.log("user1",user1)
     const user2 = await studentData.findOne({rollno});
-    console.log(user2)
+    console.log("user2",user2)
      //dept = await departments.find();
     
     //console.log(dept);
     if(JSON.stringify(user1) === JSON.stringify(user2) && user1!= null )
     {
+        console.log("inside first chk")
         return res.send('success');
     }
     if( !user1 || !user2){
+        console.log("inside second chk")
         return res.send('no match found');
     }
     if( JSON.stringify(user1)  != JSON.stringify(user2)){
+        console.log("inside third chk")
         return res.send('no match found');
     }
 })
@@ -56,7 +60,7 @@ router.post('/signupUser', async(req, res) => {
         res.send({token});
     }catch(err){
 
-        return res.status(422).send(err.message);
+        return res.send("could not sign up");
     }
 })
 

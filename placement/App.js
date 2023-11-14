@@ -18,6 +18,7 @@ import UpcomingCompanies from './src/screens/Student/UpcomingCompanies';
 import VisitedCompanies from './src/screens/Student/VisitedCompanies';
 
 import {Provider as AuthProvider} from './src/context/AuthContext';
+import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
 
@@ -27,7 +28,8 @@ const switchNavigator = createSwitchNavigator({
         StudentLogin : StudentLogin,
         StudentSignup: StudentSignup,
         AdminLogin : AdminLogin,
-        FacultyLogin : FacultyLogin
+        FacultyLogin : FacultyLogin,
+        FormPersonalDetails: FormPersonalDetails
     }),
 
     studentFlow : createMaterialBottomTabNavigator({
@@ -56,7 +58,7 @@ export default () => {
     return (
 
         <AuthProvider>
-            <App />
+            <App ref={(navigator) => {setNavigator(navigator)}}/>
         </AuthProvider>
     )
 }
