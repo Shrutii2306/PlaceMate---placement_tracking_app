@@ -1,7 +1,7 @@
 import React from 'react'
 import {  StyleSheet, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
-import { RiseOutlined } from '@ant-design/icons'
+//import { RiseOutlined } from '@ant-design/icons'
 export default function StudentHome({navigation}) {
   return (
     <View style={styles.container}>
