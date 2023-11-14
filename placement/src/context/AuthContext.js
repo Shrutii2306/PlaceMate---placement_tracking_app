@@ -7,7 +7,8 @@ const authReducer = (state, action) => {
 
     switch (action.type) {
         
-
+        case 'signout':
+            return {token :'null', errorMessage:'null'};
         case 'checkUser' : 
         return {email : action.payload.email, rno : action.payload.rno};
         case 'signin':
@@ -119,19 +120,29 @@ const adminSignin = (dispatch)  =>  async ({email, password}) => {
     }
 }
 
+const tryLocalSignin = dispatch => async() => {
 
-const signout = (dispatch) => {
+    const token = await AsyncStorage.getItem('token');
+    if(token){
 
-    return () =>{
-
+        dispatch({type: 'signin', payload:token});
+        navigate('studentFlow');
+    }else{
+        navigate('loginFlow');
     }
 }
+const signout = (dispatch) =>async () =>{
+    await AsyncStorage.removeItem('token');
+    dispatch({type :'signout'})
+    navigate('loginFlow');
+};
+
 
 
 export const {Provider, Context} = createDataContext(
 
     authReducer,
-    {signin, signout, signup,checkUser, fillPersonalDetails,adminSignin},
+    {signin, signout, signup,checkUser, fillPersonalDetails,adminSignin,tryLocalSignin},
     {token : null, errorMessage : ''},
 
 );

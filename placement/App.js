@@ -19,10 +19,12 @@ import VisitedCompanies from './src/screens/Student/VisitedCompanies';
 
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import { setNavigator } from './src/navigationRef';
-
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 const switchNavigator = createSwitchNavigator({
 
+    ResolveAuthScreen:ResolveAuthScreen,
     loginFlow : createStackNavigator({
+
 
         LoginHome : LoginHome,
         StudentLogin : StudentLogin,
