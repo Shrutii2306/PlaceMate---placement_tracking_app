@@ -37,7 +37,7 @@ export default function StudentHome({navigation}) {
                 marginHorizontal:20
             }}
             
-            onPress = { () => navigation.navigate('CurrentCompanies',{account_type : state.account_type})}
+            onPress = { () => navigation.navigate('CurrentCompanies',{account_type : state.account_type, userId : state.userId})}
         />
         <Button 
             title='Upcoming Companies'

@@ -253,7 +253,7 @@ const companiesSchema = new mongoose.Schema({
         },
         dateToApply : {
 
-            type : "String",
+            type : String,
             required : true
         },
         link : {

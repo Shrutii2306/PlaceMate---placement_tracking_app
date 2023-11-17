@@ -10,6 +10,7 @@ const companyRoutes = require('./routes/companyRoutes');
 const app = express();
 
 app.use(bodyParser.json());
+
 app.use(authRoutes);
 app.use(facultyRoutes);
 app.use(adminRoutes);

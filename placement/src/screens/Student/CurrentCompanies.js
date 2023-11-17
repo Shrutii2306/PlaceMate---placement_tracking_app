@@ -8,7 +8,10 @@ export default function CurrentCompanies({navigation}) {
 
     const {state,getJob} = useContext(CompanyContext);
     const account_type = navigation.getParam('account_type');
+    const userId = navigation.getParam('userId');
     console.log( "state",state);
+    console.log(userId);
+    
   return (
     <>
         <NavigationEvents onWillFocus={getJob}/>
@@ -21,7 +24,7 @@ export default function CurrentCompanies({navigation}) {
                 <TouchableOpacity onPress={() => navigation.navigate('CompanyDetails',{_id: item._id})}>
                     <ListItem>
                 <ListItem.Content>
-                  <ListItem.Title>{item.companyDetails.title}</ListItem.Title>{account_type=='student' ?<ListItem.Subtitle>{account_type}</ListItem.Subtitle>: null}
+                  <ListItem.Title>{item.companyDetails.title}</ListItem.Title><ListItem.Subtitle>{item.companyDetails.company}</ListItem.Subtitle>
                 </ListItem.Content>
                 <ListItem.Chevron />
               </ListItem>

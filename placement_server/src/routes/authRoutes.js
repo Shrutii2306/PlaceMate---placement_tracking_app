@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const studentUser = mongoose.model('StudentUser');
 const studentData = mongoose.model('student_placement_data');
 const jwt = require('jsonwebtoken');
-const e = require('express');
+
 const router = express.Router();
 
 router.post('/checkUser', async(req,res) => {
@@ -83,18 +83,35 @@ router.post('/signinUser',async (req,res) => {
 
     try{
         const name = user.personalDetails.name;
+        const userId = user._id;
         const account_type = user.account_type;
         await user.comparePassword(password);
         const token = jwt.sign({userId: user._id}, 'MY_SECRET_KEY');
       
         console.log("signin sucess")
         //res.send({token});
-        res.send({token,name, account_type});
+        res.send({token,name, account_type,userId});
         
     }catch(err){
 
         console.error(err  );
         return res.status(422).send({error:`${password}`+'Inavlid pass or email'});
+    }
+})
+
+router.post('/getUserDetails', async(req,res) => {
+
+    const _id = req.body;
+    const user =await studentUser.findOne({_id});
+    try{
+        if(!user){
+
+        return res.send('error not found user');
+    }
+
+    return res.send("success");
+    }catch(err){
+        console.log(err);
     }
 })
 
