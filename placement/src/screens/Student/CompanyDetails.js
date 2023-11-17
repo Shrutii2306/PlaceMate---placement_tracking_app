@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from 'react-native'
 import { View , StyleSheet,Text} from 'react-native'
-
+import { Context as CompanyContext } from '../../context/CompanyContext'
 export default function CompanyDetails({navigation}) {
+
+    const _id = navigation.getParam('_id');
+    const {getCompanyDetail, state} = useContext(CompanyContext);
+
+    const company = state.find( comp => comp._id ===_id );
+
   return (
     <View style={styles.container}>
         
-        <Text style={styles.headtitle} >INFOSYS</Text>
-        <Text>Location : Pune</Text>
-        <Text>Package : $$$$$</Text>
-        <Text>Last date to apply : 10/10/10</Text>
-        <Text>Eligibilty Criteria : ........</Text>
-        <Text style={styles.eligible}>ELIGIBLE/NOT ELIGIBLE</Text>
-        <Button title='Apply' />
+        <Text>{company.companyDetails.title}</Text>
     </View>
   )
 }

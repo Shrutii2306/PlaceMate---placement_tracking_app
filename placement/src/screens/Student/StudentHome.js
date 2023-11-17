@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {  StyleSheet, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 //import { RiseOutlined } from '@ant-design/icons'
+import { Context as AuthContext } from '../../context/AuthContext'
 export default function StudentHome({navigation}) {
+
+    const {state} = useContext(AuthContext);
+    console.log(state);
   return (
     <View style={styles.container}>
-         
+         <Text>Hello {state.name}</Text>
          
         <Button 
             title='Track your applications'
@@ -33,7 +37,7 @@ export default function StudentHome({navigation}) {
                 marginHorizontal:20
             }}
             
-            onPress = { () => navigation.navigate('CurrentCompanies')}
+            onPress = { () => navigation.navigate('CurrentCompanies',{account_type : state.account_type})}
         />
         <Button 
             title='Upcoming Companies'

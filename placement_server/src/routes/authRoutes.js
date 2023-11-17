@@ -57,7 +57,7 @@ router.post('/signupUser', async(req, res) => {
         const studentuser = new studentUser({personalDetails,academicDetails, account_type});
         await studentuser.save();
         const token=jwt.sign({userId : studentuser._id},'MY_SECRET_KEY')
-        res.send({token});
+        res.send({token,name, account_type});
     }catch(err){
 
         return res.send("could not sign up");
@@ -82,12 +82,14 @@ router.post('/signinUser',async (req,res) => {
     }
 
     try{
+        const name = user.personalDetails.name;
+        const account_type = user.account_type;
         await user.comparePassword(password);
         const token = jwt.sign({userId: user._id}, 'MY_SECRET_KEY');
       
         console.log("signin sucess")
         //res.send({token});
-        res.send({token})
+        res.send({token,name, account_type});
         
     }catch(err){
 

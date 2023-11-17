@@ -1,6 +1,7 @@
 import React,{useEffect,useContext} from 'react'
 import { Context as AuthContext } from '../context/AuthContext'
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Text } from 'react-native';
+import { View } from 'react-native';
 export default function ResolveAuthScreen() {
 
     const {tryLocalSignin} = useContext(AuthContext);
@@ -16,7 +17,7 @@ export default function ResolveAuthScreen() {
   )
 }
 
-LoginHome.navigationOptions = () => {
+ResolveAuthScreen.navigationOptions = () => {
 
     return {
 

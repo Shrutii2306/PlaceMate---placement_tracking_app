@@ -18,13 +18,14 @@ import UpcomingCompanies from './src/screens/Student/UpcomingCompanies';
 import VisitedCompanies from './src/screens/Student/VisitedCompanies';
 
 import {Provider as AuthProvider} from './src/context/AuthContext';
+import { Provider as CompanyProvider } from './src/context/CompanyContext';
 import { setNavigator } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 const switchNavigator = createSwitchNavigator({
 
     ResolveAuthScreen:ResolveAuthScreen,
-    loginFlow : createStackNavigator({
 
+    loginFlow : createStackNavigator({
 
         LoginHome : LoginHome,
         StudentLogin : StudentLogin,
@@ -39,10 +40,10 @@ const switchNavigator = createSwitchNavigator({
 
         studentHomeFlow : createStackNavigator({
             StudentHome:StudentHome,
-            currentCompaniesFlow:createStackNavigator({
+            
                 CurrentCompanies:CurrentCompanies,
-                CompanyDetails:CompanyDetails
-            }),
+                CompanyDetails:CompanyDetails,
+            
             TrackApplication:TrackApplication,
             UpcomingCompanies:UpcomingCompanies,
             VisitedCompanies:VisitedCompanies,           
@@ -59,8 +60,10 @@ export default () => {
 
     return (
 
+        <CompanyProvider>
         <AuthProvider>
             <App ref={(navigator) => {setNavigator(navigator)}}/>
         </AuthProvider>
+        </CompanyProvider>
     )
 }

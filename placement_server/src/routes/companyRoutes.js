@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const companies = mongoose.model('Companies');
 const jwt = require('jsonwebtoken');
 const e = require('express');
-const { compare } = require('bcrypt');
 const router = express.Router();
 
 router.post('/addCompany',async (req,res) => {
@@ -16,9 +15,7 @@ router.post('/addCompany',async (req,res) => {
     const criteria = {ssc,hsc,graduation,postGraduation};
     const status = {recruting,app_count};
     console.log(companyDetails,criteria,status);
-    //res.send('inside company fn')
-    const users = await companies.find();
-    console.log(users);
+    
     try
         {
         const newCompany = new companies({companyDetails,criteria,status});
@@ -30,6 +27,19 @@ router.post('/addCompany',async (req,res) => {
         return res.send(err);
     }
 
+});
+
+router.get('/getCompany', async (req,res) => {
+    try
+    {
+    const companiesdata = await companies.find();
+    console.log(companiesdata);
+    res.send(companiesdata);
+    }catch(err){
+        res.send(err);
+    }
 })
+
+
 
 module.exports = router;

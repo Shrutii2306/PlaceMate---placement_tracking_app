@@ -7,12 +7,14 @@ const authReducer = (state, action) => {
 
     switch (action.type) {
         
+        case 'auto_signin':
+            return {errorMessage:'',token: action.payload.token, name : action.payload.name,account_type: action.payload.accountType};
         case 'signout':
-            return {token :'null', errorMessage:'null'};
+            return {token :'null', errorMessage:'null',name:'null',account_type:'null'};
         case 'checkUser' : 
         return {email : action.payload.email, rno : action.payload.rno};
         case 'signin':
-            return {errorMessage:'',token: action.payload};
+            return {errorMessage:'',token: action.payload.token, name : action.payload.name,account_type: action.payload.account_type};
         case 'add_error' :
             return {...state, errorMessage: action.payload};
         default:
@@ -50,10 +52,13 @@ const fillPersonalDetails = (dispatch) => async ({email,rollno, name, password, 
         const response = await placementApi.post('./signupUser',{email,rollno, name, password, regno, contact,dept, year,marks10,marks12,marksGrad,marksPostGrad});
 
         console.log(response.data);
+        const token = response.data.token;
+        const name = response.data.name;
+        const account_type = response.data.account_type;
         if(response.data != 'could not sign up')
         {
             await AsyncStorage.setItem('token',response.data.token);
-            dispatch({type:'signin', payload : response.data.token})
+            dispatch({type:'signin', payload : {token,name, account_type}})
             navigate('studentFlow');
         }
 
@@ -85,14 +90,16 @@ const signin = (dispatch)  =>  async ({email, password}) => {
     try{
         console.log(email,password);
         const response = await placementApi.post('./signinUser',{email, password} );
-        const actuser = [{email: email, password:password}]
-
+        
+        const token = response.data.token; 
+        const name = response.data.name; 
+        const account_type = response.data.account_type;
         console.log(response.data)
-        if(response.data.token)
+        if(token)
         {
-            console.log(response.data.token);
-            await AsyncStorage.setItem('token',response.data.token);
-            dispatch({type : 'signin',payload : response.data.token});
+            console.log(token);
+            await AsyncStorage.multiSet([['token',response.data.token],['name',response.data.name],['accountType',response.data.account_type]]);
+            dispatch({type : 'signin',payload : {token,name,account_type}});
             navigate('studentFlow');
         }
         console.log(response.data);
@@ -123,9 +130,12 @@ const adminSignin = (dispatch)  =>  async ({email, password}) => {
 const tryLocalSignin = dispatch => async() => {
 
     const token = await AsyncStorage.getItem('token');
+    const name = await AsyncStorage.getItem('name');
+    const accountType = await AsyncStorage.getItem('accountType');
     if(token){
 
-        dispatch({type: 'signin', payload:token});
+        console.log("auto sigin",token,name)
+        dispatch({type: 'auto_signin', payload:{token,name,accountType}});
         navigate('studentFlow');
     }else{
         navigate('loginFlow');
@@ -143,6 +153,6 @@ export const {Provider, Context} = createDataContext(
 
     authReducer,
     {signin, signout, signup,checkUser, fillPersonalDetails,adminSignin,tryLocalSignin},
-    {token : null, errorMessage : ''},
+    {token : null, errorMessage : '',name:'', account_type : ''},
 
 );
