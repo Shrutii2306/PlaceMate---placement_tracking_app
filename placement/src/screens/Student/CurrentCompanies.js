@@ -15,7 +15,7 @@ export default function CurrentCompanies({navigation}) {
   return (
     <>
         <NavigationEvents onWillFocus={getJob}/>
-        <Text style={{fontSize:48}}>Companies recruiting{account_type}</Text>
+        <Text style={{fontSize:48}}>Companies recruiting</Text>
         <FlatList
             data={state}
             keyExtractor={item => item._id}

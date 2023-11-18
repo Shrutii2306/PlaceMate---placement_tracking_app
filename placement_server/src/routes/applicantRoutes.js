@@ -26,4 +26,20 @@ router.post('/putApplicant', async (req, res) => {
     }
 })
 
+router.get('/getMyApplications', async(req,res) => {
+
+    const {userId} = req.body;
+    try{
+        //console.log(_id)
+        const applications =await applicants.find({'userId':userId});
+        console.log("fetched applications: ",applications)
+        
+    
+        res.send(applications);
+    }catch(err)
+    {
+        console.log(err)
+        res.send(err.message);
+    }
+})
 module.exports = router;

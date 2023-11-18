@@ -19,6 +19,7 @@ import VisitedCompanies from './src/screens/Student/VisitedCompanies';
 
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import { Provider as CompanyProvider } from './src/context/CompanyContext';
+import { Provider as ApplicationProvider } from './src/context/ApplicationContext';
 import { setNavigator } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 const switchNavigator = createSwitchNavigator({
@@ -62,7 +63,9 @@ export default () => {
 
         <CompanyProvider>
         <AuthProvider>
+            <ApplicationProvider>
             <App ref={(navigator) => {setNavigator(navigator)}}/>
+            </ApplicationProvider>
         </AuthProvider>
         </CompanyProvider>
     )

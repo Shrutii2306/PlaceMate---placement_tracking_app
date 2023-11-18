@@ -23,7 +23,7 @@ export default function StudentHome({navigation}) {
                 marginHorizontal:20
             }}
             
-            onPress = { () => navigation.navigate('TrackApplication')}
+            onPress = { () => navigation.navigate('TrackApplication',{userId:state.userId})}
         />
         <Button 
             title='Companies Recruiting'
