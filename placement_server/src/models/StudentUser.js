@@ -333,7 +333,7 @@ const upcomingCompanySchema = new mongoose.Schema({
         type : String,
         requierd : true
     },
-    criteria : {
+    description : {
         type :String,
         required : true
     },

@@ -17,6 +17,7 @@ import TrackApplication from './src/screens/Student/TrackApplication';
 import UpcomingCompanies from './src/screens/Student/UpcomingCompanies';
 import VisitedCompanies from './src/screens/Student/VisitedCompanies';
 
+import { Provider as UpcomingCompaniesProvider } from './src/context/upcomingCompanyContext';
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import { Provider as CompanyProvider } from './src/context/CompanyContext';
 import { Provider as ApplicationProvider } from './src/context/ApplicationContext';
@@ -62,11 +63,13 @@ export default () => {
     return (
 
         <CompanyProvider>
-        <AuthProvider>
-            <ApplicationProvider>
-            <App ref={(navigator) => {setNavigator(navigator)}}/>
-            </ApplicationProvider>
-        </AuthProvider>
+            <AuthProvider>
+                <ApplicationProvider>
+                    <UpcomingCompaniesProvider>
+                        <App ref={(navigator) => {setNavigator(navigator)}}/>
+                    </UpcomingCompaniesProvider>
+                </ApplicationProvider>
+            </AuthProvider>
         </CompanyProvider>
     )
 }

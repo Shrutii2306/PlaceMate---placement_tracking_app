@@ -32,7 +32,7 @@ router.post('/addCompany',async (req,res) => {
 router.get('/getCompany', async (req,res) => {
     try
     {
-    const companiesdata = await companies.find();
+    const companiesdata = await companies.find({"status.recruting":"yes"});
     console.log(companiesdata);
     res.send(companiesdata);
     }catch(err){
@@ -40,6 +40,15 @@ router.get('/getCompany', async (req,res) => {
     }
 })
 
-
+router.get('/getVisitedCompanies', async (req,res) => {
+    try
+    {
+    const companiesdata = await companies.find({"status.recruting":"no"});
+    console.log(companiesdata);
+    res.send(companiesdata);
+    }catch(err){
+        res.send(err);
+    }
+})
 
 module.exports = router;

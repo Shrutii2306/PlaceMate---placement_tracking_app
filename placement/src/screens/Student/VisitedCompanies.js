@@ -5,10 +5,7 @@ export default function VisitedCompanies() {
   return (
     <View style={styles.container}>
 
-        <Text>Company : ABC</Text>
-        <Text>CTC Offered : $$$$$</Text>
-        <Text>Number of Students Placed : 20</Text>
-        
+       
     </View>
   )
 }

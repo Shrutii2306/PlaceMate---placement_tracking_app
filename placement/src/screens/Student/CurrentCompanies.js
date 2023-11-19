@@ -6,7 +6,7 @@ import { NavigationEvents } from 'react-navigation'
 import { ListItem } from 'react-native-elements'
 export default function CurrentCompanies({navigation}) {
 
-    const {state,getJob} = useContext(CompanyContext);
+    const {state,getCurrentJob} = useContext(CompanyContext);
     const account_type = navigation.getParam('account_type');
     const userId = navigation.getParam('userId');
     console.log( "state",state);
@@ -14,7 +14,7 @@ export default function CurrentCompanies({navigation}) {
     
   return (
     <>
-        <NavigationEvents onWillFocus={getJob}/>
+        <NavigationEvents onWillFocus={getCurrentJob}/>
         <Text style={{fontSize:48}}>Companies recruiting</Text>
         <FlatList
             data={state}

@@ -7,7 +7,7 @@ const facultyRoutes = require('./routes/facaultyRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const companyRoutes = require('./routes/companyRoutes');
 const applicantRoutes = require('./routes/applicantRoutes');
-
+const upcomingCompaniesRoutes = require('./routes/upcomingCompanyRoutes');
 const app = express();
 
 app.use(bodyParser.json());
@@ -17,6 +17,7 @@ app.use(facultyRoutes);
 app.use(adminRoutes);
 app.use(companyRoutes);
 app.use(applicantRoutes);
+app.use(upcomingCompaniesRoutes);
 const mongoUri = "mongodb+srv://sshrutissingh2002:mongodbpassword@cluster0.bmiyh2k.mongodb.net/?retryWrites=true&w=majority";
 ;
 mongoose.connect(mongoUri);
