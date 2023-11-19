@@ -12,7 +12,7 @@ export default function CompanyDetails({navigation}) {
     const [activeLink, setActiveLink] = useState(true);
     const company = state.find( comp => comp._id ===_id );
     const URL = company.companyDetails.link;
-
+    //console.log({userId})
     const checkEligibility = async() => {
 
         const res = await getUserDetails({hsc : company.criteria.hsc, ssc: company.criteria.ssc, graduation: company.criteria.graduation, postGraduation: company.criteria.postGraduation});
@@ -72,7 +72,7 @@ export default function CompanyDetails({navigation}) {
             marginVertical: 10,
           }}
           titleStyle={{ color: 'white', marginHorizontal: 20 }}
-         onPress={()=>putApplicant({userId : _id,jobTitle: company.companyDetails.title, company :company.companyDetails.company })}
+         onPress={()=>putApplicant({jobTitle: company.companyDetails.title, company :company.companyDetails.company })}
           disabled = {activeLink}
         />
         </View>

@@ -12,9 +12,9 @@ router.post('/putApplicant', async (req, res) => {
     const _id = userId;
     try{
         console.log(_id)
-        const newStudentUser = await studentUser.findOne({_id});
-        console.log("fetched user: ",newStudentUser)
-        const name = newStudentUser.personalDetails.name;
+        const user =await studentUser.findOne({'_id':_id});
+        console.log("fetched user: ",user)
+        const name = user.personalDetails.name;
         const newApplicant = new applicants({userId,name,jobTitle,company});
         newApplicant.save();
     
@@ -22,6 +22,7 @@ router.post('/putApplicant', async (req, res) => {
     }catch(err)
     {
         console.log(err)
+        res.send(err.message);
     }
 })
 

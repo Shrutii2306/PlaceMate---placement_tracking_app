@@ -1,6 +1,7 @@
 import createDataContext from "./createDataContext";
 import placementApi from "../api/placement";
 import { navigate } from "../navigationRef";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const companyReducer = (state, action) => {
 
@@ -29,9 +30,12 @@ const getJob = dispatch => async() => {
 
 const deleteJob = dispatch => () => {};
 
-const putApplicant = dispatch => async({}) => {
+const putApplicant = dispatch => async({jobTitle,company }) => {
 
-    const response = await placementApi.post('./putApplicant');
+    console.log("inside putapplicamt")
+    const userId = await AsyncStorage.getItem('userId');
+    console.log({userId})
+    const response = await placementApi.post('./putApplicant',{userId ,jobTitle,company });
     console.log(response);
 }
 
