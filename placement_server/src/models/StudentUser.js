@@ -323,6 +323,31 @@ const applicantsSchema = new mongoose.Schema({
 
 })
 
+const upcomingCompanySchema = new mongoose.Schema({
+
+    title : {
+        type : String,
+        required : true
+    },
+    company : {
+        type : String,
+        requierd : true
+    },
+    criteria : {
+        type :String,
+        required : true
+    },
+    salary : {
+        type : String,
+        required : true
+    },
+    date :{
+        type: String,
+        requierd: true
+    }
+})
+
+mongoose.model('UpcomingCompanies',upcomingCompanySchema);
 mongoose.model('Applicants', applicantsSchema);
 mongoose.model('Companies',companiesSchema);
 mongoose.model('FacultyUser', facultyUserSchema);

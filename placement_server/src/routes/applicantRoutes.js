@@ -31,7 +31,7 @@ router.get('/getMyApplications', async(req,res) => {
     const {userId} = req.body;
     try{
         //console.log(_id)
-        const applications =await applicants.find({'userId':userId});
+        const applications =await applicants.find(userId);
         console.log("fetched applications: ",applications)
         
     

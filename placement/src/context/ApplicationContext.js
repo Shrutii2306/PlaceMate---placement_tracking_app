@@ -24,7 +24,7 @@ const getApplication = dispatch => async() => {
     const userId =  await AsyncStorage.getItem('userId');
     console.log("app",{ userId})
     const response = await placementApi.get('./getMyApplications',{userId});
-    console.log(response.data);
+    console.log("response fetched",response.data);
     dispatch({type:'fetch_applications',payload: response.data})
 };
 

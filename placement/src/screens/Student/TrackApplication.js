@@ -3,6 +3,7 @@ import { StyleSheet, Text, View ,TouchableOpacity,FlatList  } from 'react-native
 import { Context as ApplicationContext } from '../../context/ApplicationContext';
 import { NavigationEvents } from 'react-navigation'
 import { ListItem } from 'react-native-elements'
+import ItemSpacer from '../../components/ItemSpacer';
 export default  function  TrackApplication({navigation}) {
   
   const {state,getApplication} =  useContext(ApplicationContext);
@@ -15,16 +16,19 @@ export default  function  TrackApplication({navigation}) {
             data={state}
             keyExtractor={item => item._id}
             renderItem={({item}) => {
+              console.log({item})
                 return (
+                  <ItemSpacer >
                 <TouchableOpacity>
                     <ListItem>
                 <ListItem.Content>
-                  <ListItem.Title>{item.jobTtitle}</ListItem.Title>
-                  {/* <ListItem.Subtitle>{item.companyDetails.company}</ListItem.Subtitle> */}
+                  <ListItem.Title>{item.jobTitle}</ListItem.Title>
+                  
+                  <ListItem.Subtitle>{item.company}</ListItem.Subtitle>
                 </ListItem.Content>
-                <ListItem.Chevron />
               </ListItem>
                 </TouchableOpacity>
+                </ItemSpacer>
             );
             }}
         />
@@ -39,3 +43,10 @@ const styles = StyleSheet.create({
         color:'green'
     }
 })
+
+TrackApplication.navigationOptions = () => {
+
+  return {
+      headerShown : false,
+  }
+}
