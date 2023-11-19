@@ -29,10 +29,16 @@ const getJob = dispatch => async() => {
 
 const deleteJob = dispatch => () => {};
 
+const putApplicant = dispatch => async({}) => {
+
+    const response = await placementApi.post('./putApplicant');
+    console.log(response);
+}
+
 export const {Provider, Context} = createDataContext(
 
     companyReducer,
-    {createJob, getJob, deleteJob},
+    {createJob, getJob, deleteJob, putApplicant},
     {jobs : [], errorMessage : ''},
 
 );

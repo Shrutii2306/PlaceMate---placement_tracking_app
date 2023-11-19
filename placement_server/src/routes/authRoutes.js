@@ -101,18 +101,21 @@ router.post('/signinUser',async (req,res) => {
 
 router.post('/getUserDetails', async(req,res) => {
 
+    
     const _id = req.body;
     const user =await studentUser.findOne({_id});
+    
     try{
         if(!user){
 
         return res.send('error not found user');
     }
-
-    return res.send("success");
+    
+    return res.send({ssc : user.academicDetails.marks10, hsc : user.academicDetails.marks12, graduation : user.academicDetails.marksGrad, postGraduation :user.academicDetails.marksPostGrad });
     }catch(err){
         console.log(err);
     }
 })
+
 
 module.exports = router;

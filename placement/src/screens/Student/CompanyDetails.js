@@ -1,4 +1,4 @@
-import React, { useContext,useEffect } from 'react'
+import React, { useContext,useEffect, useState } from 'react'
 import { Button } from 'react-native-elements'
 import { View , StyleSheet,Text,Linking} from 'react-native'
 import { Context as CompanyContext } from '../../context/CompanyContext'
@@ -6,16 +6,23 @@ import { Context as AuthContext } from '../../context/AuthContext'
 export default function CompanyDetails({navigation}) {
 
     const _id = navigation.getParam('_id');
-    const { state} = useContext(CompanyContext);
+    const { state, putApplicant} = useContext(CompanyContext);
     const{getUserDetails} = useContext(AuthContext);
-    
+    const [eligibilty, setEligibility] = useState('');
+    const [activeLink, setActiveLink] = useState(true);
     const company = state.find( comp => comp._id ===_id );
     const URL = company.companyDetails.link;
 
     const checkEligibility = async() => {
 
-        const res = await getUserDetails();
-        console.log("response ::: ",res)
+        const res = await getUserDetails({hsc : company.criteria.hsc, ssc: company.criteria.ssc, graduation: company.criteria.graduation, postGraduation: company.criteria.postGraduation});
+        if(res == 'eligible'){
+            setEligibility('Eligible');
+            setActiveLink(false);
+        }else{
+            setEligibility('Not Eligible');
+            setActiveLink(true);
+        }
     }
     const openLink = () => {
 
@@ -38,7 +45,7 @@ export default function CompanyDetails({navigation}) {
         <Text>Graduation : {company.criteria.graduation}</Text>
         <Text>Post Graduation : {company.criteria.postGraduation}</Text>
         <Text>Last date to apply : {company.companyDetails.dateToApply}</Text>
-        <Text>Eligibilty : </Text>
+        <Text>Eligibilty : {eligibilty}</Text>
         <Button 
             title='Apply'
             buttonStyle={{ backgroundColor: 'rgba(39, 39, 39, 1)' }}
@@ -49,8 +56,27 @@ export default function CompanyDetails({navigation}) {
               }}
               titleStyle={{ color: 'white', marginHorizontal: 20 }}
             onPress={openLink}
+              disabled = {activeLink}
         />
-
+       {!activeLink? <View style={styles.bottomContainer}>
+    
+    <View style={{display:'flex',flexDirection:'row'}}>
+    <Text>Have you applied for this job?</Text>
+       
+        <Button 
+        title='Yes'
+        buttonStyle={{ backgroundColor: 'green' }}
+          containerStyle={{
+            width: 100,
+            marginHorizontal: 75,
+            marginVertical: 10,
+          }}
+          titleStyle={{ color: 'white', marginHorizontal: 20 }}
+         onPress={()=>putApplicant({userId : _id,jobTitle: company.companyDetails.title, company :company.companyDetails.company })}
+          disabled = {activeLink}
+        />
+        </View>
+    </View>: null}
     </View>
   )
 }
@@ -75,5 +101,10 @@ const styles = StyleSheet.create({
     eligible:{
         color: 'green'
 
+    },
+    bottomContainer:{
+
+        
+        marginTop: 270,
     }
 })

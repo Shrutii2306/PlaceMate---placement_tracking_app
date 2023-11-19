@@ -300,7 +300,30 @@ const companiesSchema = new mongoose.Schema({
 
 })
 
+const applicantsSchema = new mongoose.Schema({
 
+    userId : {
+
+        type: String,
+        required: true,
+    },
+    name : {
+        type : String,
+        required : true,
+    },
+    jobTitle : {
+
+        type : String,
+        required : true
+    },
+    company :{
+        type : String,
+        required : true
+    }
+
+})
+
+mongoose.model('Applicants', applicantsSchema);
 mongoose.model('Companies',companiesSchema);
 mongoose.model('FacultyUser', facultyUserSchema);
 mongoose.model('AdminUser', adminUserSchema);

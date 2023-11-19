@@ -149,7 +149,7 @@ const signout = (dispatch) =>async () =>{
     navigate('loginFlow');
 };
 
-const getUserDetails = (dispatch)  =>  async () => {
+const getUserDetails = (dispatch)  =>  async ({ssc,hsc, graduation, postGraduation}) => {
 
     const _id = await AsyncStorage.getItem('userId');
     console.log("inside getdetails fn",_id)
@@ -157,13 +157,16 @@ const getUserDetails = (dispatch)  =>  async () => {
         console.log("iniside try")
         const response = await placementApi.post('./getUserDetails',{_id});
         console.log("context response",response.data);
-        return(response.data);
+        console.log( response.data.ssc ,Number(response.data.ssc))
+        if((Number(ssc) <= Number(response.data.ssc)) && (Number(hsc) <= Number(response.data.hsc)) && (Number(graduation) <= Number(response.data.graduation)) && (Number(postGraduation)<= Number(response.data.postGraduation)))
+        {    return("eligible");}
+        else
+        {    return("not eligible");}
 
     }catch(err){
         console.log(err);
     }
 }
-
 
 export const {Provider, Context} = createDataContext(
 
