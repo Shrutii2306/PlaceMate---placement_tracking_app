@@ -18,8 +18,10 @@ export default function ResolveAuthScreen() {
         source={require('../images/Background1.png')} 
         resizeMode="stretch"
         style={styles.img}> 
-        <Image source={require('../images/mortarboard-96.png')}/>
-        <View style={styles.heading}><Text h2 style={{color:'white'}}>PLACEMEATHER</Text></View>
+        
+        <View style={styles.heading}><Image source={require('../images/mortarboard-96.png')}/>
+        <Text h2 style={{color:'white'}}>PLACEMEATHER</Text>
+        </View>
         </ImageBackground>
     </View>
   )
@@ -40,16 +42,15 @@ const styles = StyleSheet.create({
         height: screenHeight+50, 
         width: screenWidth, 
         flex: 1,
-        justifyContent: 'center',
-        // justifyContent: 'center', 
-        // alignItems: 'center', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
       }, 
 
     container : {
 
         flex: 1,
         justifyContent: 'center',
-        marginHorizontal: 1
+        
     },
     heading : {
 

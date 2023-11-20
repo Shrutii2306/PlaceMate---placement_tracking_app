@@ -1,5 +1,5 @@
 import React from 'react-native';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';   
@@ -49,20 +49,22 @@ const switchNavigator = createSwitchNavigator({
     studentFlow : createMaterialBottomTabNavigator({
 
 
-        Home : createStackNavigator({
+        Home : {screen :createStackNavigator({
             StudentHome:StudentHome,
             CurrentCompanies:CurrentCompanies,
             CompanyDetails:CompanyDetails,
             TrackApplication:TrackApplication,
             UpcomingCompanies:UpcomingCompanies,
             VisitedCompanies:VisitedCompanies,           
-        }),
+        })
+        },
         Settings : StudentSettings       
     },{
         initialRouteName: 'Home',
-        activeColor: '#f0edf6',
-        inactiveColor: '#3e2465',
-        barStyle: { backgroundColor: '#010E07' },
+        activeColor: 'white',
+        inactiveColor: 'white',
+        labelMaxFontSizeMultiplier:2,
+        barStyle: { backgroundColor: '#010E07',paddingBottom: 20  },
       }),
 
     adminFlow : createMaterialBottomTabNavigator({
@@ -75,7 +77,12 @@ const switchNavigator = createSwitchNavigator({
             AdminUpcomingCompanies:AdminUpcomingCompanies,
             AdminCurrentCompanies:AdminVisitedCompanies,
         })
-    })
+    },{
+        initialRouteName: 'Home',
+        activeColor: '#f0edf6',
+        inactiveColor: '#3e2465',
+        barStyle: { backgroundColor: '#010E07', },
+      })
 })
 
 const App = createAppContainer(switchNavigator);

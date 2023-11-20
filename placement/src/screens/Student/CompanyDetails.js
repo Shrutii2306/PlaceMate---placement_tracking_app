@@ -1,8 +1,11 @@
 import React, { useContext,useEffect, useState } from 'react'
 import { Button } from 'react-native-elements'
-import { View , StyleSheet,Text,Linking} from 'react-native'
+import { View , StyleSheet,Text,Linking,ImageBackground,Image, Dimensions  } from 'react-native'
 import { Context as CompanyContext } from '../../context/CompanyContext'
 import { Context as AuthContext } from '../../context/AuthContext'
+import { Text as TEXT } from 'react-native-elements'
+const screenHeight = Dimensions.get('window').height; 
+const screenWidth = Dimensions.get('window').width; 
 export default function CompanyDetails({navigation}) {
 
     const _id = navigation.getParam('_id');
@@ -35,24 +38,29 @@ export default function CompanyDetails({navigation}) {
     },[])
   return (
     <View style={styles.container}>
-        <Text></Text>
-        <Text>JOb Title : {company.companyDetails.title}</Text>
-        <Text>Company Name : {company.companyDetails.company}</Text>
-        <Text>CTC Offered : {company.companyDetails.salary}</Text>
-        <Text>Criteria:</Text>
-        <Text>HSC : {company.criteria.hsc}</Text>
-        <Text>SSC : {company.criteria.ssc}</Text>
-        <Text>Graduation : {company.criteria.graduation}</Text>
-        <Text>Post Graduation : {company.criteria.postGraduation}</Text>
-        <Text>Last date to apply : {company.companyDetails.dateToApply}</Text>
-        <Text>Eligibilty : {eligibilty}</Text>
+        <ImageBackground 
+        source={require('../../images/Background3.png')} 
+        resizeMode="stretch"
+        style={styles.img}> 
+        <View style={styles.heading}><TEXT h3 style={{color:"white"}}>DETAILS</TEXT></View>
+        <View style={styles.subContainer}>
+        <Text style={styles.detailsHeader}>JOb Title : {company.companyDetails.title}</Text>
+        <Text style={styles.detailsHeader}>Company Name : {company.companyDetails.company}</Text>
+        <Text style={styles.detailsHeader}>CTC Offered : {company.companyDetails.salary}</Text>
+        <Text style={styles.detailsHeader}>Criteria:</Text>
+        <Text style={styles.detailsHeader}>HSC : {company.criteria.hsc}</Text>
+        <Text style={styles.detailsHeader}>SSC : {company.criteria.ssc}</Text>
+        <Text style={styles.detailsHeader}>Graduation : {company.criteria.graduation}</Text>
+        <Text style={styles.detailsHeader}>Post Graduation : {company.criteria.postGraduation}</Text>
+        <Text style={styles.detailsHeader}>Last date to apply : {company.companyDetails.dateToApply}</Text>
+        <Text style={styles.detailsHeader}>Eligibilty : {eligibilty=='Eligible' ? <Text style={{color:'green'}}>Eligible</Text>:<Text style={{color:'red'}}>Not Eligible</Text>}</Text>
         <Button 
             title='Apply'
-            buttonStyle={{ backgroundColor: 'rgba(39, 39, 39, 1)' }}
+            buttonStyle={{ backgroundColor: 'orange' }}
               containerStyle={{
-                width: 200,
-                marginHorizontal: 75,
-                marginVertical: 10,
+                width: 150,
+                marginHorizontal: 85,
+                marginVertical: 45,
               }}
               titleStyle={{ color: 'white', marginHorizontal: 20 }}
             onPress={openLink}
@@ -60,15 +68,14 @@ export default function CompanyDetails({navigation}) {
         />
        {!activeLink? <View style={styles.bottomContainer}>
     
-    <View style={{display:'flex',flexDirection:'row'}}>
-    <Text>Have you applied for this job?</Text>
+    <View style={{display:'flex',alignItems:'center',marginTop:80,justifyContent:'center'}}>
+    <Text style={styles.detailsHeader}>Have you applied for this job?</Text>
        
         <Button 
         title='Yes'
         buttonStyle={{ backgroundColor: 'green' }}
           containerStyle={{
             width: 100,
-            marginHorizontal: 75,
             marginVertical: 10,
           }}
           titleStyle={{ color: 'white', marginHorizontal: 20 }}
@@ -77,6 +84,8 @@ export default function CompanyDetails({navigation}) {
         />
         </View>
     </View>: null}
+    </View>
+    </ImageBackground>
     </View>
   )
 }
@@ -102,9 +111,37 @@ const styles = StyleSheet.create({
         color: 'green'
 
     },
-    bottomContainer:{
-
+    img: { 
+        height: screenHeight, 
+        width: screenWidth, 
+        flex: 1,
         
-        marginTop: 270,
+        // justifyContent: 'center', 
+        // alignItems: 'center', 
+      }, 
+    container : {
+        flex: 1,
+        
+    },
+    heading : {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop:60,
+    marginBottom:60},
+    list:{
+        backgroundColor:'grey'
+    },
+    detailsHeader:{
+        color:'white',
+        fontWeight: "bold"
+    },
+    details:{
+        color:'white',
+    },
+    subContainer:{
+        marginHorizontal:15,
+        marginTop:0
     }
 })

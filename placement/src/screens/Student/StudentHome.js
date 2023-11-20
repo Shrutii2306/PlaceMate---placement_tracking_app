@@ -16,63 +16,99 @@ export default function StudentHome({navigation}) {
         source={require('../../images/Background2.png')} 
         resizeMode="stretch"
         style={styles.img}> 
-         <Text>Hello {state.name}</Text>
+        <View style={styles.heading}><Text style={{fontSize:35,color:"white"}}>Hello {state.name}!</Text></View>
          
         <Button 
             title='Track your applications'
-            buttonStyle={{
-                borderColor: 'black',
-            }}
-            type="outline"
-            titleStyle={{ color: 'black' }}
-            containerStyle={{
-                marginVertical: 10,
-                marginHorizontal:20
-            }}
             
+               
+            buttonStyle={{
+                backgroundColor: 'white',
+                borderWidth: 2,
+                borderColor: 'white',
+                borderRadius: 15,
+                height:60
+              }}
+              containerStyle={{
+                
+                marginHorizontal: 40,
+                marginVertical: 10,
+              }}
+              titleStyle={{ 
+                fontWeight: 'bold',
+                color:'black',
+                fontSize:19
+             }}
             onPress = { () => navigation.navigate('TrackApplication',{userId:state.userId})}
         />
         <Button 
             title='Companies Recruiting'
-            buttonStyle={{
-                borderColor: 'black',
-            }}
-            type="outline"
-            titleStyle={{ color: 'black' }}
-            containerStyle={{
-                marginVertical: 10,
-                marginHorizontal:20
-            }}
             
+               
+            buttonStyle={{
+                backgroundColor: 'white',
+                borderWidth: 2,
+                borderColor: 'white',
+                borderRadius: 15,
+                height:62              }}
+              containerStyle={{
+                
+                marginHorizontal: 30,
+                marginVertical: 10,
+              }}
+              titleStyle={{ 
+                fontWeight: 'bold',
+                color:'black',
+                fontSize:19
+             }}
             onPress = { () => navigation.navigate('CurrentCompanies',{account_type : state.account_type, userId : state.userId})}
         />
         <Button 
             title='Upcoming Companies'
+            
+               
             buttonStyle={{
-                borderColor: 'black',
-            }}
-            type="outline"
-            titleStyle={{ color: 'black' }}
-            containerStyle={{
+                backgroundColor: 'white',
+                borderWidth: 2,
+                borderColor: 'white',
+                borderRadius: 15,
+                height:60
+              }}
+              containerStyle={{
+                
+                marginHorizontal: 40,
                 marginVertical: 10,
-                marginHorizontal:20
-            }}
+              }}
+              titleStyle={{ 
+                fontWeight: 'bold',
+                color:'black',
+                fontSize:19
+             }}
             
             onPress = { () => navigation.navigate('UpcomingCompanies')}
         />
 
         <Button 
             title='Companies visited'
+           
+               
             buttonStyle={{
-                borderColor: 'black',
-            }}
-            type="outline"
-            titleStyle={{ color: 'black' }}
-            containerStyle={{
+                backgroundColor: 'white',
+                borderWidth: 2,
+                borderColor: 'white',
+                borderRadius: 15,
+                height:60
+              }}
+              containerStyle={{
+                
+                marginHorizontal: 40,
                 marginVertical: 10,
-                marginHorizontal:20
-            }}
-            
+              }}
+              titleStyle={{ 
+                fontWeight: 'bold',
+                color:'black',
+                fontSize:19
+             }}
             onPress = { () => navigation.navigate('VisitedCompanies')}
         />
         </ImageBackground>
@@ -98,5 +134,13 @@ const styles = StyleSheet.create({
     container : {
         flex: 1,
         justifyContent: "center",
+    },
+    heading : {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom:30
+
     }
 })
