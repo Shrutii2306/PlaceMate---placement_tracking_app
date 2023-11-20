@@ -26,7 +26,7 @@ const createJob = dispatch => async() => {
 const getCurrentJob = dispatch => async() => {
 
     const response = await placementApi.get('./getCompany');
-    console.log(response.data);
+    console.log("all companies",response.data);
     dispatch({type:'fetch_current_jobs',payload: response.data})
 };
 
@@ -51,7 +51,7 @@ const getVisitedJob = dispatch => async() => {
 export const {Provider, Context} = createDataContext(
 
     companyReducer,
-    {createJob, getCurrentJob, deleteJob, putApplicant},
+    {createJob, getCurrentJob, deleteJob, putApplicant, getVisitedJob},
     {jobs : [], errorMessage : ''},
 
 );

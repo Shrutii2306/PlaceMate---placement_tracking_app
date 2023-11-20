@@ -1,45 +1,77 @@
 import React from 'react'
-import { View , StyleSheet} from 'react-native'
+import { View , ImageBackground,StyleSheet, Dimensions,Image} from 'react-native'
 import { Button,Text } from 'react-native-elements'
 import Spacer from '../components/Spacer'
+
+const screenHeight = Dimensions.get('window').height; 
+const screenWidth = Dimensions.get('window').width; 
 const LoginHome = ({navigation}) => {
   return (
     <View style={styles.container} >
+        <ImageBackground 
+        source={require('../images/Background1.png')} 
+        resizeMode="stretch"
+        style={styles.img}> 
+        <View style={styles.subHeading}>
+            <Image
+                source={require('../images/mortarboard-96.png') }
+            />
+        </View>
+        <View style={styles.heading}>
+        <Text h2 style={{color:'white'}}>PLACEMEATHER</Text>
+        </View>
+        
         <Spacer>
-            <View style={styles.heading}><Text h3>Login as </Text></View>
+            <View style={styles.subHeading}><Text h3 style={{color:'white'}}>Login as </Text></View>
         </Spacer>
         <Spacer>
             <Button 
-                title='Student' 
+                title='STUDENT' 
                 onPress={() => navigation.navigate('StudentLogin')}
                 
-                type='outline'
+               
                 buttonStyle={{
-                    borderColor: 'black',
-                  }}
-                titleStyle={{
-
-                    color:'black'
-                }}
+                backgroundColor: 'white',
+                borderWidth: 2,
+                borderColor: 'white',
+                borderRadius: 30,
+              }}
+              containerStyle={{
+                
+                marginHorizontal: 50,
+                marginVertical: 10,
+              }}
+              titleStyle={{ 
+                fontWeight: 'bold',
+                color:'black'
+             }}
             />
         </Spacer>
         <Spacer>
             <Button 
-                title='Admin' 
+                title='ADMIN' 
                 onPress={() => navigation.navigate('AdminLogin')} style = {styles.buttonStyle}
                 type='outline'
                 buttonStyle={{
-                    borderColor: 'black',
+                    backgroundColor: 'white',
+                    borderWidth: 2,
+                    borderColor: 'white',
+                    borderRadius: 30,
                   }}
-                titleStyle={{
-
+                  containerStyle={{
+                    
+                    marginHorizontal: 50,
+                    marginVertical: 10,
+                  }}
+                  titleStyle={{ 
+                    fontWeight: 'bold',
                     color:'black'
-                }}
+                 }}
             />
         </Spacer>
         
         <Spacer>
-        <Button title='Faculty' 
+        {/* <Button title='Faculty' 
             style={styles.buttonStyle}
             onPress={() => navigation.navigate('FacultyLogin')}  
             type='outline'
@@ -50,8 +82,9 @@ const LoginHome = ({navigation}) => {
 
                 color:'black'
             }}
-        />
+        /> */}
         </Spacer> 
+        </ImageBackground> 
     </View>
   )
 }
@@ -66,20 +99,36 @@ LoginHome.navigationOptions = () => {
 
 
 const styles = StyleSheet.create({
-
+    img: { 
+        height: screenHeight+50, 
+        width: screenWidth, 
+        flex: 1,
+        justifyContent: 'center',
+        // justifyContent: 'center', 
+        // alignItems: 'center', 
+      }, 
     container : {
 
         flex: 1,
         justifyContent: 'center',
-        marginBottom:10
+        marginBottom:10,
+        color: 'white'
     },
-    heading : {
+    subHeading : {
 
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center'
 
-    }
+    },
+    heading : {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom:30
+
+    },
 })
 
 export default LoginHome;

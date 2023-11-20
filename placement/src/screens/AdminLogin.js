@@ -26,7 +26,7 @@ export default function AdminLogin({navigation}) {
                   marginVertical: 10,
                 }}
                 titleStyle={{ color: 'white', marginHorizontal: 20 }}
-                  onPress={() => navigation.navigate('studentFlow')}
+                  onPress={() => navigation.navigate('adminFlow')}
               />
           <Spacer/>
       </View>

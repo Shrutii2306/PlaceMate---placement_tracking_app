@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Context as AuthContext } from '../context/AuthContext'
 const StudentLogin = ({navigation})  => {
 
-    const {state, signin, tryLocalSignin} = useContext(AuthContext);
+    const {state, signin, tryLocalSignin,errorMessage} = useContext(AuthContext);
     const [email,setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -36,6 +36,7 @@ const StudentLogin = ({navigation})  => {
             autoCorrect={false}
             />
         </Spacer>
+        <Text>{errorMessage}</Text>
             <Button 
                 title='Login'
                 buttonStyle={{ backgroundColor: 'rgba(39, 39, 39, 1)' }}

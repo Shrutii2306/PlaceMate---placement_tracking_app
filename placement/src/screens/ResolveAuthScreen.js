@@ -1,7 +1,9 @@
 import React,{useEffect,useContext} from 'react'
 import { Context as AuthContext } from '../context/AuthContext'
-import { StyleSheet,Text } from 'react-native';
+import { StyleSheet,Text , ImageBackground, Dimensions, Image} from 'react-native';
 import { View } from 'react-native';
+const screenHeight = Dimensions.get('window').height; 
+const screenWidth = Dimensions.get('window').width; 
 export default function ResolveAuthScreen() {
 
     const {tryLocalSignin} = useContext(AuthContext);
@@ -12,7 +14,13 @@ export default function ResolveAuthScreen() {
 
  return (
     <View style={styles.container} >
-        <Text style={styles.heading}>Placement Tracker</Text>
+         <ImageBackground 
+        source={require('../images/Background1.png')} 
+        resizeMode="stretch"
+        style={styles.img}> 
+        <Image source={require('../images/mortarboard-96.png')}/>
+        <View style={styles.heading}><Text h2 style={{color:'white'}}>PLACEMEATHER</Text></View>
+        </ImageBackground>
     </View>
   )
 }
@@ -28,17 +36,27 @@ ResolveAuthScreen.navigationOptions = () => {
 
 const styles = StyleSheet.create({
 
+    img: { 
+        height: screenHeight+50, 
+        width: screenWidth, 
+        flex: 1,
+        justifyContent: 'center',
+        // justifyContent: 'center', 
+        // alignItems: 'center', 
+      }, 
+
     container : {
 
         flex: 1,
         justifyContent: 'center',
-        marginBottom:10
+        marginHorizontal: 1
     },
     heading : {
 
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flex:1
 
     }
 })

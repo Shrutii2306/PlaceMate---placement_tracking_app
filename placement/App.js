@@ -1,7 +1,9 @@
-import React from 'react';
+import React from 'react-native';
+
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';  
+import Icon from 'react-native-vector-icons/Ionicons';  
 import LoginHome from './src/screens/LoginHome';
 import StudentLogin from './src/screens/StudentLogin';
 import StudentSignup from './src/screens/StudentSignup';
@@ -17,6 +19,12 @@ import TrackApplication from './src/screens/Student/TrackApplication';
 import UpcomingCompanies from './src/screens/Student/UpcomingCompanies';
 import VisitedCompanies from './src/screens/Student/VisitedCompanies';
 
+import AdminHome from './src/screens/Admin/AdminHome';
+import AdminProfile from './src/screens/Admin/AdminProfile';
+import AdminSettings from './src/screens/Admin/AdminSettings';
+import AdminCurrentCompanies  from './src/screens/Admin/CurrentCompanies';
+import AdminUpcomingCompanies from './src/screens/Admin/UpcomingCompanies';
+import AdminVisitedCompanies from './src/screens/Admin/VisitedCompanies';
 import { Provider as UpcomingCompaniesProvider } from './src/context/upcomingCompanyContext';
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import { Provider as CompanyProvider } from './src/context/CompanyContext';
@@ -40,20 +48,28 @@ const switchNavigator = createSwitchNavigator({
     studentFlow : createMaterialBottomTabNavigator({
 
 
-        studentHomeFlow : createStackNavigator({
+        Home : createStackNavigator({
             StudentHome:StudentHome,
-            
-                CurrentCompanies:CurrentCompanies,
-                CompanyDetails:CompanyDetails,
-            
+            CurrentCompanies:CurrentCompanies,
+            CompanyDetails:CompanyDetails,
             TrackApplication:TrackApplication,
             UpcomingCompanies:UpcomingCompanies,
             VisitedCompanies:VisitedCompanies,           
         }),
-        StudentSettings : StudentSettings,
-        
-    })
+        Settings : StudentSettings       
+    }),
 
+    adminFlow : createMaterialBottomTabNavigator({
+
+        Home : createStackNavigator({
+
+            AdminHome : AdminHome,
+            AdminCurrentCompanies:AdminCurrentCompanies,
+           
+            AdminUpcomingCompanies:AdminUpcomingCompanies,
+            AdminCurrentCompanies:AdminVisitedCompanies,
+        })
+    })
 })
 
 const App = createAppContainer(switchNavigator);
@@ -66,10 +82,11 @@ export default () => {
             <AuthProvider>
                 <ApplicationProvider>
                     <UpcomingCompaniesProvider>
-                        <App ref={(navigator) => {setNavigator(navigator)}}/>
+                        <App style={{backgroundColor:'#000804'}}  ref={(navigator) => {setNavigator(navigator)}}/>
                     </UpcomingCompaniesProvider>
                 </ApplicationProvider>
             </AuthProvider>
         </CompanyProvider>
     )
 }
+

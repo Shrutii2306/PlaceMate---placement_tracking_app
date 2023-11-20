@@ -8,12 +8,12 @@ const router = express.Router();
 router.post('/addCompany',async (req,res) => {
 
     console.log(req.body);
-    const {title,company,description,salary,dateToApply,link,ssc,hsc,graduation,postGraduation,recruting,app_count} = req.body;
-    console.log(title,company,description,salary,dateToApply,ssc,hsc,graduation,postGraduation,recruting,app_count)
+    const {title,company,description,salary,dateToApply,link,ssc,hsc,graduation,postGraduation,recruting,app_count,selected} = req.body;
+    console.log(title,company,description,salary,dateToApply,ssc,hsc,graduation,postGraduation,recruting,app_count,selected)
     const companyDetails = {title,company,description,salary,dateToApply,link};
     
     const criteria = {ssc,hsc,graduation,postGraduation};
-    const status = {recruting,app_count};
+    const status = {recruting,app_count,selected};
     console.log(companyDetails,criteria,status);
     
     try
@@ -21,7 +21,7 @@ router.post('/addCompany',async (req,res) => {
         const newCompany = new companies({companyDetails,criteria,status});
         await newCompany.save();
         const token=jwt.sign({Id : newCompany._id},'MY_SECRET_KEY')
-        res.send({token});
+        res.send("company saved successfully");
     }catch(err){
 
         return res.send(err);

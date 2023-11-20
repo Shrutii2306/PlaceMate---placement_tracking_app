@@ -10,7 +10,7 @@ export default function UpcomingCompanies() {
   return (
     <>
         <NavigationEvents onWillFocus={getJob}/>
-        <Text style={{fontSize:48}}>Companies recruiting</Text>
+        <Text style={{fontSize:48}}>Upcoming Companies</Text>
         <FlatList
             data={state}
             keyExtractor={item => item._id}
