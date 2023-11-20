@@ -1,14 +1,21 @@
 import React, { useContext } from 'react'
-import {  StyleSheet, Text, View } from 'react-native'
+import {  StyleSheet, Text, View,ImageBackground,Image, Dimensions } from 'react-native'
 import { Button } from 'react-native-elements'
 //import { RiseOutlined } from '@ant-design/icons'
 import { Context as AuthContext } from '../../context/AuthContext'
+const screenHeight = Dimensions.get('window').height; 
+const screenWidth = Dimensions.get('window').width; 
+
 export default function StudentHome({navigation}) {
 
     const {state} = useContext(AuthContext);
     console.log(state);
   return (
     <View style={styles.container}>
+        <ImageBackground 
+        source={require('../../images/Background2.png')} 
+        resizeMode="stretch"
+        style={styles.img}> 
          <Text>Hello {state.name}</Text>
          
         <Button 
@@ -68,6 +75,7 @@ export default function StudentHome({navigation}) {
             
             onPress = { () => navigation.navigate('VisitedCompanies')}
         />
+        </ImageBackground>
     </View>
   )
 }
@@ -79,7 +87,14 @@ StudentHome.navigationOptions = () => {
 }
 
 const styles = StyleSheet.create({
-
+    img: { 
+        height: screenHeight, 
+        width: screenWidth, 
+        flex: 1,
+        justifyContent: 'center',
+        // justifyContent: 'center', 
+        // alignItems: 'center', 
+      }, 
     container : {
         flex: 1,
         justifyContent: "center",

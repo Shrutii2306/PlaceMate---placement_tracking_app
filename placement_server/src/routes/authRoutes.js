@@ -60,7 +60,7 @@ router.post('/signupUser', async(req, res) => {
         res.send({token,name, account_type});
     }catch(err){
 
-        return res.send("could not sign up");
+        return res.send("Could not sign up");
     }
 })
 
@@ -71,14 +71,14 @@ router.post('/signinUser',async (req,res) => {
 
     if(!email || !password){
 
-        return res.status(422).send({error : 'must provide email n password'});
+        return res.send({error : 'Must provide Email and password'});
 
     }
 
     const user =await studentUser.findOne({"personalDetails.email" :email});
     console.log("user ::::", user);
     if(!user){
-    return res.status(404).send({error : 'Email not found'});
+    return res.send({error : 'Email not found'});
     }
 
     try{
@@ -95,7 +95,7 @@ router.post('/signinUser',async (req,res) => {
     }catch(err){
 
         console.error(err  );
-        return res.status(422).send({error:`${password}`+'Inavlid pass or email'});
+        return res.send({error:'Incorrect password!'});
     }
 })
 

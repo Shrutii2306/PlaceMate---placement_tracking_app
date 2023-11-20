@@ -7,10 +7,12 @@ const authReducer = (state, action) => {
 
     switch (action.type) {
         
+        case 'clear_error_message':
+            return {...state,errorMessage:''};
         case 'auto_signin':
             return {errorMessage:'',token: action.payload.token, name : action.payload.name,account_type: action.payload.accountType, userId: action.payload.userId};
         case 'signout':
-            return {token :'null', errorMessage:'null',name:'null',account_type:'null'};
+            return {token :'null', errorMessage:'',name:'null',account_type:'null'};
         case 'checkUser' : 
         return {email : action.payload.email, rno : action.payload.rno};
         case 'signin':
@@ -22,6 +24,11 @@ const authReducer = (state, action) => {
     }
 
 }
+
+clearErrorMessage = dispatch => () => {
+
+    dispatch({ type : 'clear_error_message'});
+};
 
 const checkUser = (dispatch) =>  async ({email, rno}) => {
         console.log("inside check fn");
@@ -47,6 +54,11 @@ const checkUser = (dispatch) =>  async ({email, rno}) => {
 const fillPersonalDetails = (dispatch) => async ({email,rollno, name, password, regno, contact,dept, year,marks10,marks12,marksGrad,marksPostGrad}) => {
 
     console.log("inside fill fun",email,rollno, name, password, regno, contact,dept, year,marks10,marks12,marksGrad,marksPostGrad);
+    if( !email || !rollno || !name || !password || !regno || !contact || !dept || !year || !marks10 || !marks12 || !marksGrad || !marksPostGrad )
+    {
+        dispatch({type:'add_error', payload: "One or more fields are empty!"});
+        return;
+    }
     try{
 
         const response = await placementApi.post('./signupUser',{email,rollno, name, password, regno, contact,dept, year,marks10,marks12,marksGrad,marksPostGrad});
@@ -61,11 +73,16 @@ const fillPersonalDetails = (dispatch) => async ({email,rollno, name, password, 
             dispatch({type:'signin', payload : {token,name, account_type}})
             navigate('studentFlow');
         }
+        else{
+
+            dispatch({type:'add_error', payload: response.data});
+
+        }
 
     }catch(err){
 
         console.log(err.message);
-
+        dispatch({type:'add_error', payload: 'Something went wrong!'});
     }
 }
 
@@ -95,7 +112,7 @@ const signin = (dispatch)  =>  async ({email, password}) => {
         const name = response.data.name; 
         const account_type = response.data.account_type;
         const userId = response.data.userId; 
-        console.log(response.data)
+        console.log("first log",response.data.error)
         if(token)
         {
             console.log(token);
@@ -103,9 +120,15 @@ const signin = (dispatch)  =>  async ({email, password}) => {
             dispatch({type : 'signin',payload : {token,name,account_type,userId}});
             navigate('studentFlow');
         }
+        else if(response.data.error){
+            console.log(response.data.error);
+            dispatch({type:'add_error', payload: response.data.error});
+        }
         console.log(response.data);
     }catch(err){
+        
         console.error("outer",err.response);
+            dispatch({type:'add_error', payload: 'Something went wrong!'});
     }
 }
 
@@ -171,7 +194,7 @@ const getUserDetails = (dispatch)  =>  async ({ssc,hsc, graduation, postGraduati
 export const {Provider, Context} = createDataContext(
 
     authReducer,
-    {signin, signout, signup,checkUser, fillPersonalDetails,adminSignin,tryLocalSignin,getUserDetails},
+    {signin, signout, signup,checkUser, fillPersonalDetails,adminSignin,tryLocalSignin,getUserDetails, clearErrorMessage},
     {token : null, errorMessage : '',name:'', account_type : '', userId:''},
 
 );

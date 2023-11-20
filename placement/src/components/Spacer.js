@@ -10,7 +10,8 @@ export default function Spacer({children}) {
 const styles = StyleSheet.create({
 
     spacer :{
-        margin:20,
+        marginHorizontal:13,
+        marginVertical:15,
     }
 });
 

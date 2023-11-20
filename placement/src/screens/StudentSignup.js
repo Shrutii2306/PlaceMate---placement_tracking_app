@@ -1,24 +1,41 @@
 
 import React,{useState, useContext} from 'react'
-import { Text,View, StyleSheet } from 'react-native'
+import { Text,View, StyleSheet, ImageBackground,Dimensions,Image } from 'react-native'
 import { Input,Button } from 'react-native-elements'
 import Spacer from '../components/Spacer'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Context as AuthContext } from '../context/AuthContext'
-
+import { NavigationEvents } from 'react-navigation'
+const screenHeight = Dimensions.get('window').height; 
+const screenWidth = Dimensions.get('window').width; 
 const StudentSignup = ({navigation})  => {
 
-    const {state, checkUser} = useContext(AuthContext);    
+    const {state, checkUser,clearErrorMessage} = useContext(AuthContext);    
     const [email,setEmail] = useState('');
     const [rno, setRno] = useState('');
 
   return (
     <View style={styles.container}>
+        <NavigationEvents 
+            onWillFocus={clearErrorMessage}
+        />
+        <ImageBackground 
+        source={require('../images/Background1.png')} 
+        resizeMode="stretch"
+        style={styles.img}> 
+        <View style={styles.heading}>
+            <Image
+                source={require('../images/mortarboard-96.png') }
+            />
+        </View>
+        <View style={styles.heading}>
+        <Text style={{color:'white',fontSize:30,fontWeight:'bold'}}>PLACEMEATHER</Text>
+        </View>
         <Spacer>
-            <Text>
+            <Text style={styles.inputLabel}>
                 Enter your Registered Email ID                
             </Text>
-            <Input 
+            <Input style={styles.input}
                  value={email}
                  onChangeText={setEmail}
                  autoCapitalize="none"
@@ -26,8 +43,8 @@ const StudentSignup = ({navigation})  => {
             />
         </Spacer>
         <Spacer>
-            <Text>Enter your Roll Number</Text>
-            <Input 
+            <Text style={styles.inputLabel}>Enter your Roll Number</Text>
+            <Input style={styles.input}
                 value={rno}
                 onChangeText={setRno}
                 autoCapitalize='none'
@@ -55,24 +72,35 @@ const StudentSignup = ({navigation})  => {
                     Have an account? Signin instead!
                 </Text>
             </TouchableOpacity>
+        </ImageBackground>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
 
+    img: { 
+        height: screenHeight+50, 
+        width: screenWidth, 
+        flex: 1,
+        justifyContent: 'center',
+        // justifyContent: 'center', 
+        // alignItems: 'center', 
+      }, 
     inputLabel:{
 
-        fontSize: 20
+        fontSize: 15,
+        color: "white"
     },
     input : {
         borderColor: 'grey',
-        marginTop:10    
+        marginTop:10,
+        color: 'white'    
     },
    
     signupLink:{
 
-        color: 'blue',
+        color: 'orange',
         textAlign:'center'
     },
     container:{
@@ -85,6 +113,14 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color:'red',
         textAlign:'center'
+    },
+    heading : {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom:30
+
     }
 
 })

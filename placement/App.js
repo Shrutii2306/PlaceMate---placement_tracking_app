@@ -2,8 +2,8 @@ import React from 'react-native';
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';  
-import Icon from 'react-native-vector-icons/Ionicons';  
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';   
+// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import LoginHome from './src/screens/LoginHome';
 import StudentLogin from './src/screens/StudentLogin';
 import StudentSignup from './src/screens/StudentSignup';
@@ -31,6 +31,7 @@ import { Provider as CompanyProvider } from './src/context/CompanyContext';
 import { Provider as ApplicationProvider } from './src/context/ApplicationContext';
 import { setNavigator } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+
 const switchNavigator = createSwitchNavigator({
 
     ResolveAuthScreen:ResolveAuthScreen,
@@ -57,7 +58,12 @@ const switchNavigator = createSwitchNavigator({
             VisitedCompanies:VisitedCompanies,           
         }),
         Settings : StudentSettings       
-    }),
+    },{
+        initialRouteName: 'Home',
+        activeColor: '#f0edf6',
+        inactiveColor: '#3e2465',
+        barStyle: { backgroundColor: '#010E07' },
+      }),
 
     adminFlow : createMaterialBottomTabNavigator({
 
