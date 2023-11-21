@@ -12,30 +12,33 @@ router.post('/adminSignin',async (req,res) => {
 
     if(!email || !password){
 
-        return res.status(422).send({error : 'adminnnn must provide email n password'});
+        return res.status(422).send({error : 'Must provide email n password'});
 
     }
 
     const user =await adminUser.findOne({email});
     console.log("user ::::", user);
     if(!user){
-    return res.status(404).send({error : 'adminn  Email not found'});
+    return res.send({error : 'Email not found'});
     }
 
     try{
+        const name = user.name;
+        const userId = user._id;
+        const account_type = user.account_type;
         const response = await user.compareadminPassword(password);
         if(response=="success")
         {
             const token = jwt.sign({userId: user._id}, 'MY_SECRET_KEY');
         console.log("signin sucess")
-        //res.send({token});
-        res.send('success')
+        res.send({token, name,userId,account_type});
+        //res.send('success')
     }
         
     }catch(err){
 
         console.error(err  );
-        return res.status(422).send({error:`${password}`+'Inavlid pass or email'});
+        return res.send({error:'Incorrect password'});
     }
 })
 

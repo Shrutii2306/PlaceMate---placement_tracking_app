@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Text,View, StyleSheet,ImageBackground,Dimensions,Image } from 'react-native';
 import { Input,Button } from 'react-native-elements'
 import Spacer from '../components/Spacer'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Context as AuthContext } from '../context/AuthContext';
+import { NavigationEvents } from 'react-navigation';
 
 const screenHeight = Dimensions.get('window').height; 
 const screenWidth = Dimensions.get('window').width; 
@@ -46,7 +47,13 @@ export default function AdminLogin({navigation}) {
   
           <Spacer>
               <Text style={styles.inputLabel} >Password</Text>
-              <Input style={styles.input}/>
+              <Input style={styles.input}
+                value={password}
+                onChangeText={setPassword}   
+                secureTextEntry         
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
           </Spacer>
 
           {state.errorMessage? <Text style={styles.errorMessage}>{state.errorMessage} </Text>: null}

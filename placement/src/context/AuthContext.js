@@ -135,19 +135,26 @@ const signin = (dispatch)  =>  async ({email, password}) => {
 const adminSignin = (dispatch)  =>  async ({email, password}) => {
     console.log("inside signin fn");
     try{
-        console.log(email,password);
+        console.log({email,password});
         const response = await placementApi.post('./adminSignin',{email, password} );
         const actuser = [{email: email, password:password}]
-
+        const token = response.data.token; 
+        const name = response.data.name; 
+        const account_type = response.data.account_type;
+        const userId = response.data.userId; 
         console.log(response.data)
-        if(response.data=='success')
+        if(token)
         {
-            
+            console.log(token);
+            await AsyncStorage.multiSet([['token',response.data.token],['name',response.data.name],['accountType',response.data.account_type],['userId',response.data.userId]]);
+            dispatch({type : 'signin',payload : {token,name,account_type,userId}});
             navigate('adminFlow');
         }
         console.log(response.data);
     }catch(err){
+        
         console.error("outer",err.response);
+            dispatch({type:'add_error', payload: 'Something went wrong!'});
     }
 }
 
