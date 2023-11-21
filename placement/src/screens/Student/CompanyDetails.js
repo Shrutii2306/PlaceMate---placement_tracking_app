@@ -1,9 +1,9 @@
 import React, { useContext,useEffect, useState } from 'react'
 import { Button } from 'react-native-elements'
-import { View , StyleSheet,Text,Linking,ImageBackground,Image, Dimensions  } from 'react-native'
 import { Context as CompanyContext } from '../../context/CompanyContext'
 import { Context as AuthContext } from '../../context/AuthContext'
 import { Text as TEXT } from 'react-native-elements'
+import { View , StyleSheet,Text,Linking,ImageBackground,Image, Dimensions  } from 'react-native'
 const screenHeight = Dimensions.get('window').height; 
 const screenWidth = Dimensions.get('window').width; 
 export default function CompanyDetails({navigation}) {
