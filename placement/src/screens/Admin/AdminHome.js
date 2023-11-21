@@ -1,53 +1,82 @@
 import React, { useContext } from 'react'
-import {  StyleSheet, Text, View } from 'react-native'
+import {  StyleSheet, Text, View,ImageBackground,Image, Dimensions } from 'react-native'
+import { Context as AuthContext } from '../../context/AuthContext';
 import { Button } from 'react-native-elements'
+const screenHeight = Dimensions.get('window').height; 
+const screenWidth = Dimensions.get('window').width; 
+
 export default function AdminHome({navigation}) {
 
-    //const {state} = useContext(AuthContext);
+    const {state} = useContext(AuthContext);
     console.log(state);
   return (
     <View style={styles.container}>
-         <Text>Hello {state.name}</Text>
+         <ImageBackground 
+        source={require('../../images/Background2.png')} 
+        resizeMode="stretch"
+        style={styles.img}> 
+        <View style={styles.heading}><Text style={{fontSize:35,color:"white"}}>Hello {state.name}</Text></View>
          
-        <Button 
+        {/* <Button 
             title='Track your applications'
             buttonStyle={{
-                borderColor: 'black',
-            }}
-            type="outline"
-            titleStyle={{ color: 'black' }}
-            containerStyle={{
+                backgroundColor: 'white',
+                borderWidth: 2,
+                borderColor: 'white',
+                borderRadius: 15,
+                height:60
+              }}
+              containerStyle={{
+                
+                marginHorizontal: 40,
                 marginVertical: 10,
-                marginHorizontal:20
-            }}
-            
+              }}
+              titleStyle={{ 
+                fontWeight: 'bold',
+                color:'black',
+                fontSize:19
+             }}
             onPress = { () => navigation.navigate('TrackApplication',{userId:state.userId})}
-        />
+        /> */}
         <Button 
             title='Companies Recruiting'
             buttonStyle={{
-                borderColor: 'black',
-            }}
-            type="outline"
-            titleStyle={{ color: 'black' }}
-            containerStyle={{
+                backgroundColor: 'white',
+                borderWidth: 2,
+                borderColor: 'white',
+                borderRadius: 15,
+                height:62              }}
+              containerStyle={{
+                
+                marginHorizontal: 30,
                 marginVertical: 10,
-                marginHorizontal:20
-            }}
+              }}
+              titleStyle={{ 
+                fontWeight: 'bold',
+                color:'black',
+                fontSize:19
+             }}
             
-            onPress = { () => navigation.navigate('CurrentCompanies',{account_type : state.account_type, userId : state.userId})}
+            onPress = { () => navigation.navigate('AdminCurrentCompanies',{account_type : state.account_type, userId : state.userId})}
         />
         <Button 
             title='Upcoming Companies'
             buttonStyle={{
-                borderColor: 'black',
-            }}
-            type="outline"
-            titleStyle={{ color: 'black' }}
-            containerStyle={{
+                backgroundColor: 'white',
+                borderWidth: 2,
+                borderColor: 'white',
+                borderRadius: 15,
+                height:62              }}
+              containerStyle={{
+                
+                marginHorizontal: 30,
                 marginVertical: 10,
-                marginHorizontal:20
-            }}
+              }}
+              titleStyle={{ 
+                fontWeight: 'bold',
+                color:'black',
+                fontSize:19
+             }}
             
             onPress = { () => navigation.navigate('UpcomingCompanies')}
         />
@@ -55,17 +84,25 @@ export default function AdminHome({navigation}) {
         <Button 
             title='Companies visited'
             buttonStyle={{
-                borderColor: 'black',
-            }}
-            type="outline"
-            titleStyle={{ color: 'black' }}
-            containerStyle={{
+                backgroundColor: 'white',
+                borderWidth: 2,
+                borderColor: 'white',
+                borderRadius: 15,
+                height:62              }}
+              containerStyle={{
+                
+                marginHorizontal: 30,
                 marginVertical: 10,
-                marginHorizontal:20
-            }}
+              }}
+              titleStyle={{ 
+                fontWeight: 'bold',
+                color:'black',
+                fontSize:19
+             }}
             
             onPress = { () => navigation.navigate('VisitedCompanies')}
         />
+        </ImageBackground>
     </View>
   )
 }
@@ -78,8 +115,24 @@ AdminHome.navigationOptions = () => {
 
 const styles = StyleSheet.create({
 
+    img: { 
+        height: screenHeight, 
+        width: screenWidth, 
+        flex: 1,
+        justifyContent: 'center',
+        // justifyContent: 'center', 
+        // alignItems: 'center', 
+      }, 
     container : {
         flex: 1,
         justifyContent: "center",
+    },
+    heading : {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom:30
+
     }
 })

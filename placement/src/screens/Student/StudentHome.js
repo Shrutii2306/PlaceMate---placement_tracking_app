@@ -44,7 +44,6 @@ export default function StudentHome({navigation}) {
         <Button 
             title='Companies Recruiting'
             
-               
             buttonStyle={{
                 backgroundColor: 'white',
                 borderWidth: 2,

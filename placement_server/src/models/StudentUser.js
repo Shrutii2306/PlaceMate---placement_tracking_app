@@ -297,7 +297,6 @@ const companiesSchema = new mongoose.Schema({
         selected :{
 
             type: Number,
-            required : true
         }
 
     }

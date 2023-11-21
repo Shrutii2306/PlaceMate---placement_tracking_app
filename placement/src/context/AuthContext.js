@@ -133,7 +133,7 @@ const signin = (dispatch)  =>  async ({email, password}) => {
 }
 
 const adminSignin = (dispatch)  =>  async ({email, password}) => {
-    console.log("inside signin fn");
+    console.log("inside admin signin fn");
     try{
         console.log({email,password});
         const response = await placementApi.post('./adminSignin',{email, password} );
@@ -149,6 +149,8 @@ const adminSignin = (dispatch)  =>  async ({email, password}) => {
             await AsyncStorage.multiSet([['token',response.data.token],['name',response.data.name],['accountType',response.data.account_type],['userId',response.data.userId]]);
             dispatch({type : 'signin',payload : {token,name,account_type,userId}});
             navigate('adminFlow');
+        }else{
+            dispatch({type:'add_error', payload: response.data.error});
         }
         console.log(response.data);
     }catch(err){
