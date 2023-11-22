@@ -36,7 +36,7 @@ export default function AdminHome({navigation}) {
                 color:'black',
                 fontSize:19
              }}
-            onPress = { () => navigation.navigate('AdminTrackApplications',{userId:state.userId})}
+            onPress = { () => navigation.navigate('AdminTrackApplications')}
         />
         <Button 
             title='Companies Recruiting'

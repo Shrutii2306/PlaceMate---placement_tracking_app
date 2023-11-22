@@ -42,4 +42,22 @@ router.get('/getMyApplications', async(req,res) => {
         res.send(err.message);
     }
 })
+
+router.get('/getCompanyApplications', async(req,res) => {
+
+    const {company} = req.body;
+    try{
+        console.log(company)
+        const applications =await applicants.find({company});
+        console.log("fetched applications: ",applications)
+        
+    
+        res.send(applications);
+    }catch(err)
+    {
+        console.log(err)
+        res.send(err.message);
+    }
+})
+
 module.exports = router;

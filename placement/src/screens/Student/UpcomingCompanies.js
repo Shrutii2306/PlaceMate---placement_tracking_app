@@ -26,7 +26,7 @@ export default function UpcomingCompanies() {
                 <TouchableOpacity>
                     <ListItem containerStyle ={{backgroundColor:'#070D04',borderColor:'white',borderRadius:2,borderBottomColor:'white'}}>
                 <ListItem.Content>
-                  <ListItem.Title style={{color:'white',fontSize:20,marginBottom:10}}>{item.title}</ListItem.Title><ListItem.Subtitle style={{color:'white'}}>{item.company}                                   CTC: {item.salary}</ListItem.Subtitle ><ListItem.Subtitle style={{color:'white'}}>Date : {item.date}</ListItem.Subtitle>
+                  <ListItem.Title style={{color:'#F8CC7B',fontSize:20,marginBottom:10}}>{item.title}</ListItem.Title><ListItem.Subtitle style={{color:'white'}}>{item.company}                                   CTC: {item.salary}</ListItem.Subtitle ><ListItem.Subtitle style={{color:'white'}}>Date : {item.date}</ListItem.Subtitle>
                 </ListItem.Content>
               </ListItem>
                 </TouchableOpacity>

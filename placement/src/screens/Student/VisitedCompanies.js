@@ -34,7 +34,7 @@ return (
               <TouchableOpacity >
                   <ListItem containerStyle ={{backgroundColor:'#070D04',borderColor:'white',borderRadius:2,borderBottomColor:'white'}}>
               <ListItem.Content>
-                <ListItem.Title style={{color:'white',fontSize:20,marginBottom:10}}>{item.companyDetails.title}</ListItem.Title>
+                <ListItem.Title style={{color:'#F8CC7B',fontSize:20,marginBottom:10}}>{item.companyDetails.title}</ListItem.Title>
                 <ListItem.Subtitle style={{color:'white'}}>{item.companyDetails.company}</ListItem.Subtitle>
                 <ListItem.Subtitle style={{color:'white'}}>CTC Offered : {item.companyDetails.salary}</ListItem.Subtitle>
                 <ListItem.Subtitle style={{color:'white'}}>Total Applicants : {item.status.app_count}                  <Text style={{color:'lightgreen'}}>Selected: {item.status.selected}</Text></ListItem.Subtitle>

@@ -29,6 +29,7 @@ import CompanyForm from './src/screens/Admin/CompanyForm';
 import UpcomingCompanyForm from './src/screens/Admin/UpcomingCompanyForm';
 import AdminCompaniesDetails from './src/screens/Admin/AdminCompanyDetails';
 import AdminTrackApplications from './src/screens/Admin/TrackApplications';
+import ApplicationDetails from './src/screens/Admin/ApplicationDetails';
 import { Provider as UpcomingCompaniesProvider } from './src/context/upcomingCompanyContext';
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import { Provider as CompanyProvider } from './src/context/CompanyContext';
@@ -109,6 +110,7 @@ const switchNavigator = createSwitchNavigator({
             AdminCompaniesDetails:AdminCompaniesDetails,
             UpcomingCompanyForm:UpcomingCompanyForm,
             AdminTrackApplications:AdminTrackApplications,
+            ApplicationDetails: ApplicationDetails
 
         }),navigationOptions :{
 

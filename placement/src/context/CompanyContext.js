@@ -12,6 +12,8 @@ const companyReducer = (state, action) => {
             return action.payload;
         case 'fetch_visited_jobs':
             return action.payload;
+        case 'fetch_company_names':
+            return action.payload;
         case 'add_error' :
             return {...state, errorMessage: action.payload};
         default:
@@ -84,10 +86,18 @@ const getVisitedJob = dispatch => async() => {
     dispatch({type:'fetch_visited_jobs',payload: response.data})
 }
 
+const getCompanyNames = dispatch => async() => {
+
+    const response = await placementApi.get('./getCompanyNames');
+    console.log(response.data);
+    dispatch({type:'fetch_company_names',payload: response.data})
+
+}
+
 export const {Provider, Context} = createDataContext(
 
     companyReducer,
-    {createJob, getCurrentJob, deleteJob, putApplicant, getVisitedJob},
-    {jobs : [], errorMessage : ''},
+    {createJob, getCurrentJob, deleteJob, putApplicant, getVisitedJob,getCompanyNames},
+    {jobs : [], errorMessage : '',companyNames:''},
 
 );

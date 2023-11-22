@@ -32,7 +32,7 @@ export default  function  TrackApplication({navigation}) {
                 <ListItem.Content>
                   <ListItem.Title style={{color:'white',fontSize:20,marginBottom:10}}>{item.jobTitle}</ListItem.Title>
                   
-                  <ListItem.Subtitle style={{color:'white'}}>{item.company}</ListItem.Subtitle>
+                  <ListItem.Subtitle style={{color:'#F8CC7B'}}>{item.company}</ListItem.Subtitle>
                 </ListItem.Content>
               </ListItem>
                 </TouchableOpacity>

@@ -7,7 +7,10 @@ const companyReducer = (state, action) => {
 
 
     switch (action.type) {
+
         
+        case 'fetch_company_applications':
+            return action.payload;
         case 'fetch_applications':
             return action.payload;
         default:
@@ -28,11 +31,18 @@ const getApplication = dispatch => async() => {
     dispatch({type:'fetch_applications',payload: response.data})
 };
 
+const getCompanyApplications = dispatch => async({company}) =>{
+
+    const response = await placementApi.get('./getCompanyApplications',{company});
+    console.log("response fetched",response.data);
+    dispatch({type:'fetch_company_applications',payload: response.data})
+
+}
 
 export const {Provider, Context} = createDataContext(
 
     companyReducer,
-    { getApplication},
+    { getApplication, getCompanyApplications},
     {myApplications : [], errorMessage : ''},
 
 );

@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser =  require('body-parser');
 const authRoutes =  require('./routes/authRoutes')
-const facultyRoutes = require('./routes/facaultyRoutes');
+// const facultyRoutes = require('./routes/facaultyRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const companyRoutes = require('./routes/companyRoutes');
 const applicantRoutes = require('./routes/applicantRoutes');
@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(authRoutes);
-app.use(facultyRoutes);
+// app.use(facultyRoutes);
 app.use(adminRoutes);
 app.use(companyRoutes);
 app.use(applicantRoutes);

@@ -53,4 +53,17 @@ router.get('/getVisitedCompanies', async (req,res) => {
     }
 })
 
+router.get('/getCompanyNames',async(req,res) => {
+
+    try{
+
+        const companyNames = await companies.find({'status.recruting':'yes'},{'companyDetails.company':1,_id:0});
+        console.log({companyNames})
+        res.send(companyNames);
+    }catch(err){
+        res.send(err);
+    }
+})
+
+
 module.exports = router;
