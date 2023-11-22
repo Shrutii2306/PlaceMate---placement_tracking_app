@@ -17,6 +17,10 @@ const upcomingCompanyReducer = (state, action) => {
 
 }
 
+const createJob = dispatch => async({}) => {
+
+
+}
 
 
 const getJob = dispatch => async() => {

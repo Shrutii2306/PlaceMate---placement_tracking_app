@@ -34,7 +34,7 @@ export default function CurrentCompanies({navigation}) {
                     <ItemSpacer>
                     <ListItem containerStyle ={{backgroundColor:'#070D04',borderColor:'white',borderRadius:2,borderBottomColor:'white'}}>
                 <ListItem.Content >
-                  <ListItem.Title style={{color:'white',fontSize:20,marginBottom:10}}>{item.companyDetails.title}</ListItem.Title><ListItem.Subtitle style={{color:'white'}}>{item.companyDetails.company}</ListItem.Subtitle>
+                  <ListItem.Title style={{color:'white'}}>{item.companyDetails.title}</ListItem.Title><ListItem.Subtitle style={{color:'white'}}>{item.companyDetails.company}</ListItem.Subtitle>
                 </ListItem.Content>
                 <ListItem.Chevron />
               </ListItem>

@@ -12,15 +12,51 @@ const companyReducer = (state, action) => {
             return action.payload;
         case 'fetch_visited_jobs':
             return action.payload;
+        case 'add_error' :
+            return {...state, errorMessage: action.payload};
         default:
             return state;
     }
 
 }
 
-const createJob = dispatch => async() => {
+const createJob = dispatch => async({title,company,description,salary,dateToApply,link,ssc,hsc,graduation,postGraduation,recruting}) => {
+    
+    console.log("inside fill fun",title,company,description,salary,dateToApply,link,ssc,hsc,graduation,postGraduation,recruting);
+    if( !title || !company || !description || !salary || !dateToApply || !link || !ssc || !hsc || !graduation || !postGraduation || !recruting )
+    {
+        dispatch({type:'add_error', payload: "One or more fields are empty!"});
+        return;
+    }
+    try{
+
+        const response = await placementApi.post('./addCompany',{title,company,description,salary,dateToApply,link,ssc,hsc,graduation,postGraduation,recruting});
+
+        console.log(response.data);
+        
+        if(response.data == 'company saved successfully')
+        {
+            
+            navigate('AdminCurrentCompanies');
+        }
+        else{
+
+            dispatch({type:'add_error', payload: response.data});
+
+        }
+
+    }catch(err){
+
+        console.log(err.message);
+        dispatch({type:'add_error', payload: 'Something went wrong!'});
+    }
+}
 
     
+
+clearErrorMessage = dispatch => () => {
+
+    dispatch({ type : 'clear_error_message'});
 };
 
 const getCurrentJob = dispatch => async() => {

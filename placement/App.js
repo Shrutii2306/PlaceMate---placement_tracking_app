@@ -26,6 +26,7 @@ import AdminCurrentCompanies  from './src/screens/Admin/CurrentCompanies';
 import AdminUpcomingCompanies from './src/screens/Admin/UpcomingCompanies';
 import AdminVisitedCompanies from './src/screens/Admin/VisitedCompanies';
 import CompanyForm from './src/screens/Admin/CompanyForm';
+import AdminCompaniesDetails from './src/screens/Admin/AdminCompanyDetails';
 import { Provider as UpcomingCompaniesProvider } from './src/context/upcomingCompanyContext';
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import { Provider as CompanyProvider } from './src/context/CompanyContext';
@@ -77,6 +78,7 @@ const switchNavigator = createSwitchNavigator({
             CompanyForm : CompanyForm,
             AdminUpcomingCompanies:AdminUpcomingCompanies,
             AdminVisitedCompanies:AdminVisitedCompanies,
+            AdminCompaniesDetails:AdminCompaniesDetails
         }),
         Settings : AdminSettings
     },{
