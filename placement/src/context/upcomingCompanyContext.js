@@ -17,8 +17,36 @@ const upcomingCompanyReducer = (state, action) => {
 
 }
 
-const createJob = dispatch => async({}) => {
+const createUpcomingJob = dispatch => async({title,company,description,salary,date}) => {
 
+    console.log("inside fill fun",title,company,description,salary,date);
+    if( !title || !company || !description || !salary || !date )
+    {
+        dispatch({type:'add_error', payload: "One or more fields are empty!"});
+        return;
+    }
+    try{
+
+        const response = await placementApi.post('./addUpcomingCompanies',{title,company,description,salary,date});
+
+        console.log(response.data);
+        
+        if(response.data == 'saved successfully')
+        {
+            
+            navigate('AdminUpcomingCompanies');
+        }
+        else{
+
+            dispatch({type:'add_error', payload: response.data});
+
+        }
+
+    }catch(err){
+
+        console.log(err.message);
+        dispatch({type:'add_error', payload: 'Something went wrong!'});
+    }
 
 }
 
@@ -33,7 +61,7 @@ const getJob = dispatch => async() => {
 export const {Provider, Context} = createDataContext(
 
     upcomingCompanyReducer,
-    {getJob},
+    {getJob,createUpcomingJob},
     {companies : [], errorMessage : ''},
 
 );

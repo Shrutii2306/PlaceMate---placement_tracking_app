@@ -17,8 +17,8 @@ export default function AdminHome({navigation}) {
         style={styles.img}> 
         <View style={styles.heading}><Text style={{fontSize:35,color:"white"}}>Hello {state.name}</Text></View>
          
-        {/* <Button 
-            title='Track your applications'
+        <Button 
+            title='Track applications'
             buttonStyle={{
                 backgroundColor: 'white',
                 borderWidth: 2,
@@ -36,47 +36,48 @@ export default function AdminHome({navigation}) {
                 color:'black',
                 fontSize:19
              }}
-            onPress = { () => navigation.navigate('TrackApplication',{userId:state.userId})}
-        /> */}
+            onPress = { () => navigation.navigate('AdminTrackApplications',{userId:state.userId})}
+        />
         <Button 
             title='Companies Recruiting'
             buttonStyle={{
-                backgroundColor: 'white',
-                borderWidth: 2,
-                borderColor: 'white',
-                borderRadius: 15,
-                height:62              }}
-              containerStyle={{
-                
-                marginHorizontal: 30,
-                marginVertical: 10,
-              }}
-              titleStyle={{ 
-                fontWeight: 'bold',
-                color:'black',
-                fontSize:19
-             }}
-            
+              backgroundColor: 'white',
+              borderWidth: 2,
+              borderColor: 'white',
+              borderRadius: 15,
+              height:60
+            }}
+            containerStyle={{
+              
+              marginHorizontal: 40,
+              marginVertical: 10,
+            }}
+            titleStyle={{ 
+              fontWeight: 'bold',
+              color:'black',
+              fontSize:19
+           }}
             onPress = { () => navigation.navigate('AdminCurrentCompanies',{account_type : state.account_type, userId : state.userId})}
         />
         <Button 
             title='Upcoming Companies'
             buttonStyle={{
-                backgroundColor: 'white',
-                borderWidth: 2,
-                borderColor: 'white',
-                borderRadius: 15,
-                height:62              }}
-              containerStyle={{
-                
-                marginHorizontal: 30,
-                marginVertical: 10,
-              }}
-              titleStyle={{ 
-                fontWeight: 'bold',
-                color:'black',
-                fontSize:19
-             }}
+              backgroundColor: 'white',
+              borderWidth: 2,
+              borderColor: 'white',
+              borderRadius: 15,
+              height:60
+            }}
+            containerStyle={{
+              
+              marginHorizontal: 40,
+              marginVertical: 10,
+            }}
+            titleStyle={{ 
+              fontWeight: 'bold',
+              color:'black',
+              fontSize:19
+           }}
             
             onPress = { () => navigation.navigate('AdminUpcomingCompanies')}
         />
@@ -84,21 +85,22 @@ export default function AdminHome({navigation}) {
         <Button 
             title='Companies visited'
             buttonStyle={{
-                backgroundColor: 'white',
-                borderWidth: 2,
-                borderColor: 'white',
-                borderRadius: 15,
-                height:62              }}
-              containerStyle={{
-                
-                marginHorizontal: 30,
-                marginVertical: 10,
-              }}
-              titleStyle={{ 
-                fontWeight: 'bold',
-                color:'black',
-                fontSize:19
-             }}
+              backgroundColor: 'white',
+              borderWidth: 2,
+              borderColor: 'white',
+              borderRadius: 15,
+              height:60
+            }}
+            containerStyle={{
+              
+              marginHorizontal: 40,
+              marginVertical: 10,
+            }}
+            titleStyle={{ 
+              fontWeight: 'bold',
+              color:'black',
+              fontSize:19
+           }}
             
             onPress = { () => navigation.navigate('AdminVisitedCompanies')}
         />

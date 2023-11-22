@@ -1,5 +1,5 @@
 import React from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { View } from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';   
@@ -26,13 +26,18 @@ import AdminCurrentCompanies  from './src/screens/Admin/CurrentCompanies';
 import AdminUpcomingCompanies from './src/screens/Admin/UpcomingCompanies';
 import AdminVisitedCompanies from './src/screens/Admin/VisitedCompanies';
 import CompanyForm from './src/screens/Admin/CompanyForm';
+import UpcomingCompanyForm from './src/screens/Admin/UpcomingCompanyForm';
 import AdminCompaniesDetails from './src/screens/Admin/AdminCompanyDetails';
+import AdminTrackApplications from './src/screens/Admin/TrackApplications';
 import { Provider as UpcomingCompaniesProvider } from './src/context/upcomingCompanyContext';
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import { Provider as CompanyProvider } from './src/context/CompanyContext';
 import { Provider as ApplicationProvider } from './src/context/ApplicationContext';
 import { setNavigator } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+
+import Icon from 'react-native-vector-icons/Ionicons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const switchNavigator = createSwitchNavigator({
 
@@ -58,35 +63,84 @@ const switchNavigator = createSwitchNavigator({
             TrackApplication:TrackApplication,
             UpcomingCompanies:UpcomingCompanies,
             VisitedCompanies:VisitedCompanies,           
-        })
+        }),navigationOptions :{
+
+            tabBarIcon: ({tintColor}) => (
+              <View>
+                <Icon
+                style={{color:tintColor}}
+                name='ios-home'
+                size={20}
+                />
+              </View>
+            ),
+          }
         },
-        Settings : StudentSettings       
+        Profile : {screen : StudentSettings,
+            navigationOptions :{
+
+                tabBarIcon: ({tintColor}) => (
+                  <View>
+                    <Icon
+                    style={{color:tintColor}}
+                    name='person'
+                    size={20}
+                    />
+                  </View>
+                ),
+              }}  
     },{
         initialRouteName: 'Home',
         activeColor: 'white',
-        inactiveColor: 'white',
+        inactiveColor: 'grey',
         labelMaxFontSizeMultiplier:2,
-        barStyle: { backgroundColor: '#010E07',paddingBottom: 20  },
+        barStyle: { backgroundColor: '#010E07' },
       }),
 
     adminFlow : createMaterialBottomTabNavigator({
 
-        Home : createStackNavigator({
+        Home : {screen :createStackNavigator({
 
             AdminHome : AdminHome,
             AdminCurrentCompanies:AdminCurrentCompanies,
             CompanyForm : CompanyForm,
             AdminUpcomingCompanies:AdminUpcomingCompanies,
             AdminVisitedCompanies:AdminVisitedCompanies,
-            AdminCompaniesDetails:AdminCompaniesDetails
-        }),
-        Settings : AdminSettings
+            AdminCompaniesDetails:AdminCompaniesDetails,
+            UpcomingCompanyForm:UpcomingCompanyForm,
+            AdminTrackApplications:AdminTrackApplications,
+
+        }),navigationOptions :{
+
+            tabBarIcon: ({tintColor}) => (
+              <View>
+                <Icon
+                style={{color:tintColor}}
+                name='ios-home'
+                size={20}
+                />
+              </View>
+            ),
+          }
+        },
+        Profile :{ screen: AdminSettings,navigationOptions :{
+
+            tabBarIcon: ({tintColor}) => (
+              <View>
+                <Icon
+                style={{color:tintColor}}
+                name='person'
+                size={20}
+                />
+              </View>
+            ),
+          }}
     },{
         initialRouteName: 'Home',
         activeColor: 'white',
-        inactiveColor: 'white',
+        inactiveColor: 'grey',
         labelMaxFontSizeMultiplier:2,
-        barStyle: { backgroundColor: '#010E07',paddingBottom: 20  },
+        barStyle: { backgroundColor: '#010E07' },
       })
 })
 

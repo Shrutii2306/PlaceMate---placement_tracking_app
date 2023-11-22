@@ -21,9 +21,7 @@ export default function CurrentCompanies({navigation}) {
     ToastAndroid.show('Add a Job', ToastAndroid.SHORT);
   }
 
-  const addCompany = () => {
-
-  }
+ 
   return (
     <>
     <ImageBackground 
