@@ -170,7 +170,13 @@ const tryLocalSignin = dispatch => async() => {
 
         console.log("auto sigin",token,name)
         dispatch({type: 'auto_signin', payload:{token,name,accountType, userId}});
-        navigate('studentFlow');
+        if(accountType=='student')
+        {
+            navigate('studentFlow');
+        }else if(accountType=='admin'){
+
+            navigate('adminFlow');
+        }
     }else{
         navigate('loginFlow');
     }

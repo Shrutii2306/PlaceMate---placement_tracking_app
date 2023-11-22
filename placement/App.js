@@ -76,13 +76,15 @@ const switchNavigator = createSwitchNavigator({
             AdminCurrentCompanies:AdminCurrentCompanies,
             CompanyForm : CompanyForm,
             AdminUpcomingCompanies:AdminUpcomingCompanies,
-            AdminCurrentCompanies:AdminVisitedCompanies,
-        })
+            AdminVisitedCompanies:AdminVisitedCompanies,
+        }),
+        Settings : AdminSettings
     },{
         initialRouteName: 'Home',
-        activeColor: '#f0edf6',
-        inactiveColor: '#3e2465',
-        barStyle: { backgroundColor: '#010E07', },
+        activeColor: 'white',
+        inactiveColor: 'white',
+        labelMaxFontSizeMultiplier:2,
+        barStyle: { backgroundColor: '#010E07',paddingBottom: 20  },
       })
 })
 

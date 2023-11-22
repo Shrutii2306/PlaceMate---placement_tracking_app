@@ -78,7 +78,7 @@ export default function AdminHome({navigation}) {
                 fontSize:19
              }}
             
-            onPress = { () => navigation.navigate('UpcomingCompanies')}
+            onPress = { () => navigation.navigate('AdminUpcomingCompanies')}
         />
 
         <Button 
@@ -100,7 +100,7 @@ export default function AdminHome({navigation}) {
                 fontSize:19
              }}
             
-            onPress = { () => navigation.navigate('VisitedCompanies')}
+            onPress = { () => navigation.navigate('AdminVisitedCompanies')}
         />
         </ImageBackground>
     </View>
