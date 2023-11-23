@@ -18,9 +18,8 @@ const LoginHome = ({navigation}) => {
             />
         </View>
         <View style={styles.heading}>
-        <Text h2 style={{color:'white'}}>PLACEMEATHER</Text>
+        <Text h2 style={{color:'#D48F08'}}>PLACEMATE</Text>
         </View>
-        
         <Spacer>
             <View style={styles.subHeading}><Text h3 style={{color:'white'}}>Login as </Text></View>
         </Spacer>
@@ -84,6 +83,7 @@ const LoginHome = ({navigation}) => {
             }}
         /> */}
         </Spacer> 
+        
         </ImageBackground> 
     </View>
   )
@@ -132,3 +132,7 @@ const styles = StyleSheet.create({
 })
 
 export default LoginHome;
+
+
+
+

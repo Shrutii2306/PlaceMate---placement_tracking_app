@@ -63,7 +63,7 @@ const StudentLogin = ({navigation})  => {
         />
       <ScrollView>
       <View style={styles.heading}>
-        <Text style={{color:'white',fontSize:30,fontWeight:'bold'}}>REGISTER</Text>
+        <Text style={{color:'#D48F08',fontSize:30,fontWeight:'bold'}}>REGISTER</Text>
         </View>
         <Spacer>
           <Text style={styles.inputLabel}>Name</Text>

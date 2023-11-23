@@ -18,7 +18,7 @@ export default function VisitedCompanies() {
         source={require('../../images/Background3.png')} 
         resizeMode="stretch"
         style={styles.img}> 
-        <View style={styles.heading}><TEXT h4 style={{color:'white'}}>COMPANIES VISITED</TEXT></View>
+        <View style={styles.heading}><TEXT h4 style={{color:'#D48F08'}}>COMPANIES VISITED</TEXT></View>
       <NavigationEvents onWillFocus={getVisitedJob}/>
       
       <FlatList

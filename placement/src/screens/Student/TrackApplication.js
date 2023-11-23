@@ -18,7 +18,7 @@ export default  function  TrackApplication({navigation}) {
         source={require('../../images/Background3.png')} 
         resizeMode="stretch"
         style={styles.img}> 
-        <View style={styles.heading}><TEXT h4 style={{color:'white'}}>MY APPLICATIONS</TEXT></View>
+        <View style={styles.heading}><TEXT h4 style={{color:'#D48F08'}}>MY APPLICATIONS</TEXT></View>
         <NavigationEvents onWillFocus={getApplication}/>
         <FlatList
             data={state}

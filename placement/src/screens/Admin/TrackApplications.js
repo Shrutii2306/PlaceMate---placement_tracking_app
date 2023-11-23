@@ -23,7 +23,7 @@ export default function TrackApplications({navigation}) {
           source={require('../../images/Background3.png')} 
           resizeMode="stretch"
           style={styles.img}> 
-          <View style={styles.heading}><Text h4 style={{color:"white"}}>TRACK APPLICATIONS</Text></View>
+          <View style={styles.heading}><Text h4 style={{color:"#D48F08"}}>TRACK APPLICATIONS</Text></View>
           <Text style={{color:'white'}}>Select a company :</Text>
           <NavigationEvents onWillFocus={getCurrentJob}/>
           <FlatList

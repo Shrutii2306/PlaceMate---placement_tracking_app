@@ -16,7 +16,7 @@ export default function StudentHome({navigation}) {
         source={require('../../images/Background2.png')} 
         resizeMode="stretch"
         style={styles.img}> 
-        <View style={styles.heading}><Text style={{fontSize:35,color:"white"}}>Hello {state.name}!</Text></View>
+        <View style={styles.heading}><Text style={{fontSize:35,color:"#D48F08"}}>Hello {state.name}!</Text></View>
          
         <Button 
             title='Track your applications'

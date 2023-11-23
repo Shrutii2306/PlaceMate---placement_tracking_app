@@ -33,7 +33,7 @@ const StudentLogin = ({navigation})  => {
             />
         </View>
         <View style={styles.heading}>
-        <Text style={{color:'white',fontSize:30,fontWeight:'bold'}}>PLACEMEATHER</Text>
+        <Text style={{color:'#D48F08',fontSize:30,fontWeight:'bold'}}>PLACEMATE</Text>
         </View>
         <Spacer>             
             <Text style={styles.inputLabel}>Email ID</Text>

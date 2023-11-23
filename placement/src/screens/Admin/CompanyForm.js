@@ -27,7 +27,7 @@ export default function CompanyForm({navigation}) {
       <NavigationEvents 
             onWillFocus={clearErrorMessage}
         />    
-        <View style={styles.heading}><Text style={{fontSize:28,color:"white"}}>ADD A NEW COMPANY</Text></View>
+        <View style={styles.heading}><Text style={{fontSize:28,color:"#D48F08"}}>ADD A NEW COMPANY</Text></View>
     <ScrollView>
         <Spacer>
             <Text style={styles.inputLabel}>Job Title</Text>

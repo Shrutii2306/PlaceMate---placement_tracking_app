@@ -27,7 +27,7 @@ export default function UpcomingCompaniesAdmin({navigation}) {
         resizeMode="stretch"
         style={styles.img}> 
         <NavigationEvents onWillFocus={getJob}/>
-        <View style={styles.heading}><TEXT h4 style={{color:'white'}}>UPCOMING COMPANIES</TEXT></View>
+        <View style={styles.heading}><TEXT h4 style={{color:'#D48F08'}}>UPCOMING COMPANIES</TEXT></View>
         <FlatList
             data={state}
             keyExtractor={item => item._id}

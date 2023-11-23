@@ -24,7 +24,7 @@ export default function ApplicationDetails({navigation}) {
         source={require('../../images/Background3.png')} 
         resizeMode="stretch"
         style={styles.img}> 
-        <View style={styles.heading}><TEXT h4 style={{color:'white'}}>APPLICATIONS</TEXT></View>
+        <View style={styles.heading}><TEXT h4 style={{color:'#D48F08'}}>APPLICATIONS</TEXT></View>
         <NavigationEvents onWillFocus={()=> getCompanyApplications({company})}/>
     <FlatList
           data={state}
@@ -36,8 +36,8 @@ export default function ApplicationDetails({navigation}) {
                   <ListItem containerStyle ={{backgroundColor:'#070D04',borderColor:'white',borderRadius:2,borderBottomColor:'white'}}>
               <ListItem.Content>
                 <ListItem.Title style={{color:'#F8CC7B',fontSize:20,marginBottom:10}}>{item.name}</ListItem.Title>
-                <ListItem.Subtitle style={{color:'white'}}>{item.jobTitle}</ListItem.Subtitle>
-                <ListItem.Subtitle style={{color:'white'}}>CTC Offered : {item.companyDetails.salary}</ListItem.Subtitle>
+                <ListItem.Subtitle style={{color:'white'}}>{item.jobTitle}, {item.company}</ListItem.Subtitle>
+                
                
               </ListItem.Content>
             </ListItem>

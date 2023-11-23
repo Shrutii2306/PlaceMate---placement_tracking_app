@@ -33,11 +33,13 @@ const getApplication = dispatch => async() => {
 
 const getCompanyApplications = dispatch => async({company}) =>{
 
+    console.log({company});
+    const comp = "Infosys";
     const response = await placementApi.get('./getCompanyApplications',{company});
-    console.log("response fetched",response.data);
+    console.log("response fetched",response);
     dispatch({type:'fetch_company_applications',payload: response.data})
 
-}
+};
 
 export const {Provider, Context} = createDataContext(
 

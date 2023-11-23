@@ -15,9 +15,8 @@ export default function StudentSettings({navigation}) {
         source={require('../../images/Background2.png')} 
         resizeMode="stretch"
         style={styles.img}> 
-        <View style={styles.heading}><Text h3 style={{color:"white"}}>SETTINGS</Text></View>
-            <Button title='LOGOUT' onPress={signout}
-            
+        <View style={styles.heading}><Text h3 style={{color:"#D48F08"}}>PROFILE</Text></View>
+            <Button title='LOGOUT' onPress={signout}       
              
                
             buttonStyle={{

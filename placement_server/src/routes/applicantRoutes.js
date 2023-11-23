@@ -46,9 +46,10 @@ router.get('/getMyApplications', async(req,res) => {
 router.get('/getCompanyApplications', async(req,res) => {
 
     const {company} = req.body;
+    console.log("req.body",req.body,company);
     try{
-        console.log(company)
-        const applications =await applicants.find({company});
+        console.log({company})
+        const applications =await applicants.find(company);
         console.log("fetched applications: ",applications)
         
     

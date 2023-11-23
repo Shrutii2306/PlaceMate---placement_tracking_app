@@ -92,7 +92,7 @@ const switchNavigator = createSwitchNavigator({
               }}  
     },{
         initialRouteName: 'Home',
-        activeColor: 'white',
+        activeColor: '#D48F08',
         inactiveColor: 'grey',
         labelMaxFontSizeMultiplier:2,
         barStyle: { backgroundColor: '#010E07' },
@@ -139,7 +139,7 @@ const switchNavigator = createSwitchNavigator({
           }}
     },{
         initialRouteName: 'Home',
-        activeColor: 'white',
+        activeColor: '#D48F08',
         inactiveColor: 'grey',
         labelMaxFontSizeMultiplier:2,
         barStyle: { backgroundColor: '#010E07' },

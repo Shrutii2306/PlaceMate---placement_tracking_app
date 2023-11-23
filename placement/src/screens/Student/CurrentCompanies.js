@@ -23,7 +23,7 @@ export default function CurrentCompanies({navigation}) {
         source={require('../../images/Background3.png')} 
         resizeMode="stretch"
         style={styles.img}> 
-        <View style={styles.heading}><Text h4 style={{color:"white"}}>COMPANIES RECRUITING</Text></View>
+        <View style={styles.heading}><Text h4 style={{color:"#D48F08"}}>COMPANIES RECRUITING</Text></View>
         <NavigationEvents onWillFocus={getCurrentJob}/>
         <FlatList
             data={state}

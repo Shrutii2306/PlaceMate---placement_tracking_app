@@ -42,7 +42,7 @@ export default function CompanyDetails({navigation}) {
         source={require('../../images/Background3.png')} 
         resizeMode="stretch"
         style={styles.img}> 
-        <View style={styles.heading}><TEXT h3 style={{color:"white"}}>DETAILS</TEXT></View>
+        <View style={styles.heading}><TEXT h3 style={{color:"#D48F08"}}>DETAILS</TEXT></View>
         <View style={styles.subContainer}>
         <Text style={styles.detailsHeader}>JOb Title : {company.companyDetails.title}</Text>
         <Text style={styles.detailsHeader}>Company Name : {company.companyDetails.company}</Text>
