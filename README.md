@@ -29,12 +29,6 @@ Copy code
 npm start
 Visit http://localhost:3000 in your browser to access the app.
 
-Features
-Student Profiles: Maintain comprehensive profiles for each student, including academic achievements, skills, and preferences.
-Placement Records: Track the placement history of students, including details about companies, job roles, and placement dates.
-Company Management: Manage interactions with recruiting companies, including contact information and historical data.
-Analytics and Reports: Generate reports and analytics to gain insights into placement trends, success rates, and areas for improvement.
-Contributing
 We welcome contributions! To contribute to PlaceMate, follow these steps:
 
 Fork the repository.
