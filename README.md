@@ -39,6 +39,10 @@ Copy code
 npm start
 Visit http://localhost:3000 in your browser to access the app.
 
+
+https://github.com/Shrutii2306/PlaceMate---placement_tracking_app/assets/96549823/9aff180a-8f68-4e28-9a8f-3481e217de52
+
+
 Features
 Student Profiles: Maintain comprehensive profiles for each student, including academic achievements, skills, and preferences.
 Placement Records: Track the placement history of students, including details about companies, job roles, and placement dates.
