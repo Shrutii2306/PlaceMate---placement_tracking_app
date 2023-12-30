@@ -1,5 +1,3 @@
-# placement_tracking_app
-
 # PlaceMate
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -8,19 +6,11 @@
 
 `PlaceMate` is a comprehensive college placement tracking app designed to simplify and enhance the management of student placements within an educational institution. This application streamlines the placement process, providing a centralized platform to track student placement records, manage company interactions, and generate insightful analytics.
 
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Installation
 
 To install and set up `PlaceMate`, follow these steps:
 
-```bash
+
 # Clone the repository
 git clone https://github.com/yourusername/PlaceMate.git
 
@@ -39,10 +29,6 @@ Copy code
 npm start
 Visit http://localhost:3000 in your browser to access the app.
 
-
-https://github.com/Shrutii2306/PlaceMate---placement_tracking_app/assets/96549823/9aff180a-8f68-4e28-9a8f-3481e217de52
-
-
 Features
 Student Profiles: Maintain comprehensive profiles for each student, including academic achievements, skills, and preferences.
 Placement Records: Track the placement history of students, including details about companies, job roles, and placement dates.
@@ -54,6 +40,10 @@ We welcome contributions! To contribute to PlaceMate, follow these steps:
 Fork the repository.
 Create a new branch for your feature or bug fix.
 Make your changes.
+
+https://github.com/Shrutii2306/PlaceMate---placement_tracking_app/assets/96549823/c104d347-bccc-4207-a5d9-c128b4804bc5
+
+
 Submit a pull request.
 Please adhere to the established coding standards and provide comprehensive documentation for new features.
 
